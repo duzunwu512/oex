@@ -2,10 +2,10 @@
 -- 扩展字典类别
 -- ----------------------------
 
---添加考试类别
+-- 添加考试类别
 insert into sys_dict_type values(101,  '试题类别', 'oex_question_type',       '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '试题类别列表');
 insert into sys_dict_type values(102,  '试卷类别', 'oex_paper_type',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '试卷类别列表');
---添加字
+-- 添加字
 insert into sys_dict_data values(150,  1,  '单选题',       	'1',  'oex_question_type',   '',   '',      'Y', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '单选题');
 insert into sys_dict_data values(151,  2,  '多选题',       	'2',  'oex_question_type',   '',   '',      'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '多选题');
 insert into sys_dict_data values(152,  3,  '判断对错题',     '3',  'oex_question_type',   '',   '',      'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '判断对错题');
@@ -16,14 +16,14 @@ insert into sys_dict_data values(156,  7,  '作文',     	'7',  'oex_question_ty
 insert into sys_dict_data values(157,  8,  '填写',     	'8',  'oex_question_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '作文');
 insert into sys_dict_data values(158,  9,  '论文',     	'9',  'oex_question_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '作文');
 
---考试类别
+-- 考试类别
 insert into sys_dict_type values(103,  '考试类别', 'oex_exam_type',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '考试类别列表');
 insert into sys_dict_data values(159,  1,  '开卷',     	'1',  'oex_exam_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '完成填空');
 insert into sys_dict_data values(160,  2,  '闭卷',     	'2',  'oex_exam_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '完成填空');
 
 
 
---年份 2001， 2002....2018--
+-- 年份 2001， 2002....2018--
 insert into sys_dict_type values(104,  '年份', 'oex_year',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '试题年份');
 insert into sys_dict_data values(161,  1,  '2001',     	'1',  'oex_year',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '2001年');
 insert into sys_dict_data values(162,  2,  '2002',     	'2',  'oex_year',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '2002年');
@@ -45,13 +45,13 @@ insert into sys_dict_data values(177,  17,  '2017',     	'17',  'oex_year',   ''
 insert into sys_dict_data values(178,  18,  '2018',     	'18',  'oex_year',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '2018年');
 
 
---试卷种类
+-- 试卷种类
 insert into sys_dict_type values(105,  '试卷种类', 'oex_paper_catelog',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '试卷种类');
 insert into sys_dict_data values(179,  1,  '上午卷',     	'1',  'oex_paper_catelog',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '上午卷');
 insert into sys_dict_data values(180,  2,  '下午卷',     	'2',  'oex_paper_catelog',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '下午卷');
 insert into sys_dict_data values(181,  3,  '论文',     	'3',  'oex_paper_catelog',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '论文');
 
-----支付方式
+-- --支付方式
 insert into sys_dict_type values(106,  '支付方式', 'oex_pay_type',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '支付方式');
 insert into sys_dict_data values(182,  1,  '微信',     	'wechat',  'oex_pay_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '上午卷');
 insert into sys_dict_data values(183,  2,  '支付宝',     	'alipay',  'oex_pay_type',   '',   '',  	'N', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '下午卷');

@@ -1,5 +1,6 @@
-Application Version: ${ruoyi.version}
 Spring Boot Version: ${spring-boot.version}
+Rouyi Version: ${ruoyi.version}
+Oex Version: ${oex.version}
 ////////////////////////////////////////////////////////////////////
 //                          _ooOoo_                               //
 //                         o8888888o                              //
