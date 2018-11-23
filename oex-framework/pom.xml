@@ -96,6 +96,11 @@
             <artifactId>oex-system</artifactId>
             <version>${oex.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.gzl.dge</groupId>
+            <artifactId>oex-core</artifactId>
+            <version>${oex.version}</version>
+        </dependency>
         
         <!-- 定时任务-->
         <dependency>

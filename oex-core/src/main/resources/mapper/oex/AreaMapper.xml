@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.dge.oex.mapper.AreaMapper">
+    
+    <resultMap type="Area" id="AreaResult">
+        <result property="id"    column="id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="name"    column="name"    />
+        <result property="level"    column="level"    />
+        <result property="code"    column="code"    />
+        <result property="provinceId"    column="province_id"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+	
+	<sql id="selectAreaVo">
+        select id, parent_id, name, level, code, province_id, status, create_by, create_time, update_by, update_time, remark from oex_area
+    </sql>
+	
+    <select id="selectAreaList" parameterType="Area" resultMap="AreaResult">
+        <include refid="selectAreaVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+             <if test="parentId != null "> and parent_id = #{parentId}</if>
+             <if test="name != null  and name != '' "> and name = #{name}</if>
+             <if test="level != null  and level != '' "> and level = #{level}</if>
+             <if test="code != null  and code != '' "> and code = #{code}</if>
+             <if test="provinceId != null "> and province_id = #{provinceId}</if>
+             <if test="status != null  and status != '' "> and status = #{status}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+             <if test="remark != null  and remark != '' "> and remark = #{remark}</if>
+         </where>
+    </select>
+    
+    <select id="selectAreaById" parameterType="Integer" resultMap="AreaResult">
+        <include refid="selectAreaVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertArea" parameterType="Area">
+        insert into oex_area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">id,</if>
+			<if test="parentId != null  ">parent_id,</if>
+			<if test="name != null  and name != ''  ">name,</if>
+			<if test="level != null  and level != ''  ">level,</if>
+			<if test="code != null  and code != ''  ">code,</if>
+			<if test="provinceId != null  ">province_id,</if>
+			<if test="status != null  and status != ''  ">status,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+			<if test="remark != null  and remark != ''  ">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">#{id},</if>
+			<if test="parentId != null  ">#{parentId},</if>
+			<if test="name != null  and name != ''  ">#{name},</if>
+			<if test="level != null  and level != ''  ">#{level},</if>
+			<if test="code != null  and code != ''  ">#{code},</if>
+			<if test="provinceId != null  ">#{provinceId},</if>
+			<if test="status != null  and status != ''  ">#{status},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+			<if test="remark != null  and remark != ''  ">#{remark},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateArea" parameterType="Area">
+        update oex_area
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null  ">parent_id = #{parentId},</if>
+            <if test="name != null  and name != ''  ">name = #{name},</if>
+            <if test="level != null  and level != ''  ">level = #{level},</if>
+            <if test="code != null  and code != ''  ">code = #{code},</if>
+            <if test="provinceId != null  ">province_id = #{provinceId},</if>
+            <if test="status != null  and status != ''  ">status = #{status},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteAreaById" parameterType="Integer">
+        delete from oex_area where id = #{id}
+    </delete>
+	
+    <delete id="deleteAreaByIds" parameterType="String">
+        delete from oex_area where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

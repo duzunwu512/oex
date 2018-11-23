@@ -43,6 +43,7 @@
 		<module>oex-quartz</module>
 		<module>oex-generator</module>
         <module>oex-common</module>
+        <module>oex-core</module>
     </modules>
     <packaging>pom</packaging>
 

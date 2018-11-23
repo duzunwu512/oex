@@ -426,7 +426,7 @@ create table sys_dict_type
     remark 	         varchar(500) 	 default '' 				comment '备注',
 	primary key (dict_id),
 	unique (dict_type)
-) engine=innodb auto_increment=200 default charset=utf8 comment = '字典类型表';
+) engine=innodb auto_increment=100 default charset=utf8 comment = '字典类型表';
 
 insert into sys_dict_type values(1,  '用户性别', 'sys_user_sex',        '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '用户性别列表');
 insert into sys_dict_type values(2,  '菜单状态', 'sys_show_hide',       '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '菜单状态列表');
@@ -460,7 +460,7 @@ create table sys_dict_data
 	update_time      datetime                                   comment '更新时间',
     remark 	         varchar(500) 	 default '' 				comment '备注',
 	primary key (dict_code)
-) engine=innodb auto_increment=300 default charset=utf8 comment = '字典数据表';
+) engine=innodb auto_increment=100 default charset=utf8 comment = '字典数据表';
 
 
 insert into sys_dict_data values(1,  1,  '男',       '0',  'sys_user_sex',        '',   '',        'Y', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '性别男');

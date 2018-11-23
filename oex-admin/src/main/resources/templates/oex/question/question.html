@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li>
+								试题分类 1：单选；2：多选；3：填空；4：判断；5：问答：<input type="text" name="qtypeId"/>
+							</li>
+
+							<li>
+								1：极易；2：简单；3：适中；4：困难；5：极难：<input type="text" name="dIFFICULTY"/>
+							</li>
+
+							<li>
+								题干：<input type="text" name="tITLE"/>
+							</li>
+
+							<li>
+								选项A：<input type="text" name="optionA"/>
+							</li>
+
+							<li>
+								选项B：<input type="text" name="optionB"/>
+							</li>
+
+							<li>
+								选项C：<input type="text" name="optionC"/>
+							</li>
+
+							<li>
+								选项D：<input type="text" name="optionD"/>
+							</li>
+
+							<li>
+								选项E：<input type="text" name="optionE"/>
+							</li>
+
+							<li>
+								选项F：<input type="text" name="optionF"/>
+							</li>
+
+							<li>
+								选项G：<input type="text" name="optionG"/>
+							</li>
+
+							<li>
+								答案：<input type="text" name="aNSWER"/>
+							</li>
+
+							<li>
+								解析：<input type="text" name="aNALYSIS"/>
+							</li>
+
+							<li>
+								试卷ID：<input type="text" name="paperId"/>
+							</li>
+
+							<li>
+								排序：<input type="text" name="seq"/>
+							</li>
+
+							<li>
+								分数：<input type="text" name="sCORE"/>
+							</li>
+
+							<li>
+								备注：<input type="text" name="descpt"/>
+							</li>
+
+							<li>
+								状态（0正常 1停用）：<input type="text" name="status"/>
+							</li>
+
+							<li>
+								创建者：<input type="text" name="createBy"/>
+							</li>
+
+							<li>
+								创建时间：<input type="text" name="createTime"/>
+							</li>
+
+							<li>
+								更新者：<input type="text" name="updateBy"/>
+							</li>
+
+							<li>
+								更新时间：<input type="text" name="updateTime"/>
+							</li>
+
+							<li>
+								备注：<input type="text" name="remark"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+	        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="oex:question:add">
+					<i class="fa fa-plus"></i> 添加
+				</a>
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="oex:question:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="oex:question:remove">
+					<i class="fa fa-remove"></i> 删除
+				</a>
+				<a class="btn btn-warning" onclick="$.table.exportExcel()" shiro:hasPermission="oex:question:export">
+						<i class="fa fa-download"></i> 导出
+				 </a>
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var editFlag = [[${@permission.hasPermi('oex:question:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('oex:question:remove')}]];
+        var prefix = ctx + "oex/question";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",
+                modalName: "试题",
+				search: false,
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'iD', 
+					title : 'ID',
+					visible: false
+				},
+				{
+					field : 'qtypeId', 
+					title : '试题分类 1：单选；2：多选；3：填空；4：判断；5：问答',
+					sortable: true
+				},
+				{
+					field : 'dIFFICULTY', 
+					title : '1：极易；2：简单；3：适中；4：困难；5：极难',
+					sortable: true
+				},
+				{
+					field : 'tITLE', 
+					title : '题干',
+					sortable: true
+				},
+				{
+					field : 'optionA', 
+					title : '选项A',
+					sortable: true
+				},
+				{
+					field : 'optionB', 
+					title : '选项B',
+					sortable: true
+				},
+				{
+					field : 'optionC', 
+					title : '选项C',
+					sortable: true
+				},
+				{
+					field : 'optionD', 
+					title : '选项D',
+					sortable: true
+				},
+				{
+					field : 'optionE', 
+					title : '选项E',
+					sortable: true
+				},
+				{
+					field : 'optionF', 
+					title : '选项F',
+					sortable: true
+				},
+				{
+					field : 'optionG', 
+					title : '选项G',
+					sortable: true
+				},
+				{
+					field : 'aNSWER', 
+					title : '答案',
+					sortable: true
+				},
+				{
+					field : 'aNALYSIS', 
+					title : '解析',
+					sortable: true
+				},
+				{
+					field : 'paperId', 
+					title : '试卷ID',
+					sortable: true
+				},
+				{
+					field : 'seq', 
+					title : '排序',
+					sortable: true
+				},
+				{
+					field : 'sCORE', 
+					title : '分数',
+					sortable: true
+				},
+				{
+					field : 'descpt', 
+					title : '备注',
+					sortable: true
+				},
+				{
+					field : 'status', 
+					title : '状态（0正常 1停用）',
+					sortable: true
+				},
+				{
+					field : 'createBy', 
+					title : '创建者',
+					sortable: true
+				},
+				{
+					field : 'createTime', 
+					title : '创建时间',
+					sortable: true
+				},
+				{
+					field : 'updateBy', 
+					title : '更新者',
+					sortable: true
+				},
+				{
+					field : 'updateTime', 
+					title : '更新时间',
+					sortable: true
+				},
+				{
+					field : 'remark', 
+					title : '备注',
+					sortable: true
+				},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.iD + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.iD + '\')"><i class="fa fa-remove"></i>删除</a>');
+						return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+    </script>
+</body>
+</html>

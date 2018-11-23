@@ -12,12 +12,12 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 @MapperScan("com.gzl.dge.*.mapper")
-public class RuoYiApplication
+public class OexApplication
 {
     public static void main(String[] args)
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
-        SpringApplication.run(RuoYiApplication.class, args);
+        SpringApplication.run(OexApplication.class, args);
         System.out.println("OEX 启动成功！！！ \n");
     }
 }

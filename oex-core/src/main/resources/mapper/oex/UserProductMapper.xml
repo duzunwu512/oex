@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.dge.oex.mapper.UserProductMapper">
+    
+    <resultMap type="UserProduct" id="UserProductResult">
+        <result property="iD"    column="ID"    />
+        <result property="userId"    column="user_id"    />
+        <result property="productId"    column="product_id"    />
+        <result property="orderId"    column="order_id"    />
+        <result property="startDate"    column="start_date"    />
+        <result property="endDate"    column="end_date"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+	
+	<sql id="selectUserProductVo">
+        select ID, user_id, product_id, order_id, start_date, end_date, status, create_by, create_time, update_by, update_time, remark from oex_user_product
+    </sql>
+	
+    <select id="selectUserProductList" parameterType="UserProduct" resultMap="UserProductResult">
+        <include refid="selectUserProductVo"/>
+        <where>  
+            <if test="iD != null "> and ID = #{iD}</if>
+             <if test="userId != null "> and user_id = #{userId}</if>
+             <if test="productId != null "> and product_id = #{productId}</if>
+             <if test="orderId != null "> and order_id = #{orderId}</if>
+             <if test="startDate != null "> and start_date = #{startDate}</if>
+             <if test="endDate != null "> and end_date = #{endDate}</if>
+             <if test="status != null  and status != '' "> and status = #{status}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+             <if test="remark != null  and remark != '' "> and remark = #{remark}</if>
+         </where>
+    </select>
+    
+    <select id="selectUserProductById" parameterType="Long" resultMap="UserProductResult">
+        <include refid="selectUserProductVo"/>
+        where ID = #{iD}
+    </select>
+        
+    <insert id="insertUserProduct" parameterType="UserProduct">
+        insert into oex_user_product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="iD != null  ">ID,</if>
+			<if test="userId != null  ">user_id,</if>
+			<if test="productId != null  ">product_id,</if>
+			<if test="orderId != null  ">order_id,</if>
+			<if test="startDate != null  ">start_date,</if>
+			<if test="endDate != null  ">end_date,</if>
+			<if test="status != null  and status != ''  ">status,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+			<if test="remark != null  and remark != ''  ">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="iD != null  ">#{iD},</if>
+			<if test="userId != null  ">#{userId},</if>
+			<if test="productId != null  ">#{productId},</if>
+			<if test="orderId != null  ">#{orderId},</if>
+			<if test="startDate != null  ">#{startDate},</if>
+			<if test="endDate != null  ">#{endDate},</if>
+			<if test="status != null  and status != ''  ">#{status},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+			<if test="remark != null  and remark != ''  ">#{remark},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateUserProduct" parameterType="UserProduct">
+        update oex_user_product
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null  ">user_id = #{userId},</if>
+            <if test="productId != null  ">product_id = #{productId},</if>
+            <if test="orderId != null  ">order_id = #{orderId},</if>
+            <if test="startDate != null  ">start_date = #{startDate},</if>
+            <if test="endDate != null  ">end_date = #{endDate},</if>
+            <if test="status != null  and status != ''  ">status = #{status},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
+        </trim>
+        where ID = #{iD}
+    </update>
+
+	<delete id="deleteUserProductById" parameterType="Long">
+        delete from oex_user_product where ID = #{iD}
+    </delete>
+	
+    <delete id="deleteUserProductByIds" parameterType="String">
+        delete from oex_user_product where ID in 
+        <foreach item="iD" collection="array" open="(" separator="," close=")">
+            #{iD}
+        </foreach>
+    </delete>
+    
+</mapper>

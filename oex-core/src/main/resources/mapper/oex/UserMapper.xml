@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.dge.oex.mapper.UserMapper">
+    
+    <resultMap type="User" id="UserResult">
+        <result property="id"    column="id"    />
+        <result property="openid"    column="openid"    />
+        <result property="realName"    column="real_name"    />
+        <result property="userName"    column="user_name"    />
+        <result property="email"    column="email"    />
+        <result property="phone"    column="phone"    />
+        <result property="sex"    column="sex"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="password"    column="password"    />
+        <result property="salt"    column="salt"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+	
+	<sql id="selectUserVo">
+        select id, openid, real_name, user_name, email, phone, sex, avatar, password, salt, status, create_by, create_time, update_by, update_time, remark from oex_user
+    </sql>
+	
+    <select id="selectUserList" parameterType="User" resultMap="UserResult">
+        <include refid="selectUserVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+             <if test="openid != null  and openid != '' "> and openid = #{openid}</if>
+             <if test="realName != null  and realName != '' "> and real_name = #{realName}</if>
+             <if test="userName != null  and userName != '' "> and user_name = #{userName}</if>
+             <if test="email != null  and email != '' "> and email = #{email}</if>
+             <if test="phone != null  and phone != '' "> and phone = #{phone}</if>
+             <if test="sex != null  and sex != '' "> and sex = #{sex}</if>
+             <if test="avatar != null  and avatar != '' "> and avatar = #{avatar}</if>
+             <if test="password != null  and password != '' "> and password = #{password}</if>
+             <if test="salt != null  and salt != '' "> and salt = #{salt}</if>
+             <if test="status != null  and status != '' "> and status = #{status}</if>
+             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and update_time = #{updateTime}</if>
+             <if test="remark != null  and remark != '' "> and remark = #{remark}</if>
+         </where>
+    </select>
+    
+    <select id="selectUserById" parameterType="Long" resultMap="UserResult">
+        <include refid="selectUserVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertUser" parameterType="User">
+        insert into oex_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">id,</if>
+			<if test="openid != null  and openid != ''  ">openid,</if>
+			<if test="realName != null  and realName != ''  ">real_name,</if>
+			<if test="userName != null  and userName != ''  ">user_name,</if>
+			<if test="email != null  and email != ''  ">email,</if>
+			<if test="phone != null  and phone != ''  ">phone,</if>
+			<if test="sex != null  and sex != ''  ">sex,</if>
+			<if test="avatar != null  and avatar != ''  ">avatar,</if>
+			<if test="password != null  and password != ''  ">password,</if>
+			<if test="salt != null  and salt != ''  ">salt,</if>
+			<if test="status != null  and status != ''  ">status,</if>
+			<if test="createBy != null  and createBy != ''  ">create_by,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="updateBy != null  and updateBy != ''  ">update_by,</if>
+			<if test="updateTime != null  ">update_time,</if>
+			<if test="remark != null  and remark != ''  ">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">#{id},</if>
+			<if test="openid != null  and openid != ''  ">#{openid},</if>
+			<if test="realName != null  and realName != ''  ">#{realName},</if>
+			<if test="userName != null  and userName != ''  ">#{userName},</if>
+			<if test="email != null  and email != ''  ">#{email},</if>
+			<if test="phone != null  and phone != ''  ">#{phone},</if>
+			<if test="sex != null  and sex != ''  ">#{sex},</if>
+			<if test="avatar != null  and avatar != ''  ">#{avatar},</if>
+			<if test="password != null  and password != ''  ">#{password},</if>
+			<if test="salt != null  and salt != ''  ">#{salt},</if>
+			<if test="status != null  and status != ''  ">#{status},</if>
+			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="updateBy != null  and updateBy != ''  ">#{updateBy},</if>
+			<if test="updateTime != null  ">#{updateTime},</if>
+			<if test="remark != null  and remark != ''  ">#{remark},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateUser" parameterType="User">
+        update oex_user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="openid != null  and openid != ''  ">openid = #{openid},</if>
+            <if test="realName != null  and realName != ''  ">real_name = #{realName},</if>
+            <if test="userName != null  and userName != ''  ">user_name = #{userName},</if>
+            <if test="email != null  and email != ''  ">email = #{email},</if>
+            <if test="phone != null  and phone != ''  ">phone = #{phone},</if>
+            <if test="sex != null  and sex != ''  ">sex = #{sex},</if>
+            <if test="avatar != null  and avatar != ''  ">avatar = #{avatar},</if>
+            <if test="password != null  and password != ''  ">password = #{password},</if>
+            <if test="salt != null  and salt != ''  ">salt = #{salt},</if>
+            <if test="status != null  and status != ''  ">status = #{status},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteUserById" parameterType="Long">
+        delete from oex_user where id = #{id}
+    </delete>
+	
+    <delete id="deleteUserByIds" parameterType="String">
+        delete from oex_user where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

@@ -20,7 +20,7 @@ import com.gzl.dge.generator.domain.TableInfo;
 public class GenUtils
 {
     /** 项目空间路径 */
-    private static final String PROJECT_PATH = "main/java/com/ruoyi";
+    private static final String PROJECT_PATH = "main/java/com/gzl/dge";
 
     /** mybatis空间路径 */
     private static final String MYBATIS_PATH = "main/resources/mapper";

@@ -44,7 +44,6 @@
             <groupId>com.gzl.dge</groupId>
             <artifactId>oex-framework</artifactId>
             <version>${oex.version}</version>
-
         </dependency>
         
     </dependencies>
