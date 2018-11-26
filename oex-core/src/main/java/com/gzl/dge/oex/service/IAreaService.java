@@ -2,6 +2,7 @@ package com.gzl.dge.oex.service;
 
 import com.gzl.dge.oex.domain.Area;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 地区 服务层
@@ -50,5 +51,7 @@ public interface IAreaService
      * @return 结果
      */
 	public int deleteAreaByIds(String ids);
+
+	public List<Map<String, Object>> selectAreaTree();
 	
 }

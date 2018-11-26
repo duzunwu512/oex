@@ -1,6 +1,8 @@
 package com.gzl.dge.web.controller.oex;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,6 +124,15 @@ public class AreaController extends BaseController
 	public AjaxResult remove(String ids)
 	{		
 		return toAjax(areaService.deleteAreaByIds(ids));
+	}
+
+
+	@GetMapping("/treeData")
+	@ResponseBody
+	public List<Map<String, Object>> treeData()
+	{
+		List<Map<String, Object>> tree = areaService.selectAreaTree();
+		return tree;
 	}
 	
 }

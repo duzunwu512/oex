@@ -1,6 +1,11 @@
 package com.gzl.dge.oex.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.gzl.dge.common.constant.UserConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gzl.dge.oex.mapper.AreaMapper;
@@ -78,6 +83,48 @@ public class AreaServiceImpl implements IAreaService
 	public int deleteAreaByIds(String ids)
 	{
 		return areaMapper.deleteAreaByIds(Convert.toStrArray(ids));
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectAreaTree(){
+		List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
+		Area area = new Area();
+		area.setLevel("0");
+		List<Area> list0 = selectAreaList(area);
+		area.setLevel("1");
+		List<Area> list1 = selectAreaList(area);
+		list0.addAll(list1);
+
+		trees = getTrees(list0, false, null);
+		return trees;
+	}
+
+	public List<Map<String, Object>> getTrees(List<Area> deptList, boolean isCheck, List<String> roleDeptList)
+	{
+
+		List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
+		for (Area dept : deptList)
+		{
+			if (UserConstants.DEPT_NORMAL.equals(dept.getStatus()))
+			{
+				Map<String, Object> deptMap = new HashMap<String, Object>();
+				deptMap.put("id", dept.getId());
+				deptMap.put("pId", dept.getParentId());
+				deptMap.put("name", dept.getName());
+				deptMap.put("title", dept.getName());
+				if (isCheck)
+				{
+					deptMap.put("checked", roleDeptList.contains(dept.getId() + dept.getName()));
+				}
+				else
+				{
+					deptMap.put("checked", false);
+				}
+				trees.add(deptMap);
+			}
+		}
+		return trees;
 	}
 	
 }

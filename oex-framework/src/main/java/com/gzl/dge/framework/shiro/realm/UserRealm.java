@@ -1,18 +1,13 @@
 package com.gzl.dge.framework.shiro.realm;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import com.gzl.dge.framework.shiro.service.SysLoginService;
+import com.gzl.dge.framework.util.ShiroUtils;
+import com.gzl.dge.framework.web.exception.user.*;
+import com.gzl.dge.system.domain.SysUser;
+import com.gzl.dge.system.service.ISysMenuService;
+import com.gzl.dge.system.service.ISysRoleService;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.ExcessiveAttemptsException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -20,19 +15,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 
-import com.gzl.dge.framework.shiro.service.SysLoginService;
-import com.gzl.dge.framework.util.ShiroUtils;
-import com.gzl.dge.framework.web.exception.user.CaptchaException;
-import com.gzl.dge.framework.web.exception.user.RoleBlockedException;
-import com.gzl.dge.framework.web.exception.user.UserBlockedException;
-import com.gzl.dge.framework.web.exception.user.UserNotExistsException;
-import com.gzl.dge.framework.web.exception.user.UserPasswordNotMatchException;
-import com.gzl.dge.framework.web.exception.user.UserPasswordRetryLimitExceedException;
-import com.gzl.dge.system.domain.SysUser;
-import com.gzl.dge.system.service.ISysMenuService;
-import com.gzl.dge.system.service.ISysRoleService;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 自定义Realm 处理登录 权限
@@ -44,15 +29,12 @@ public class UserRealm extends AuthorizingRealm
     private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
 
     @Autowired
-    @Lazy //就是这里，必须延时加载，根本原因是bean实例化的顺序上，shiro的bean必须要先实例化，否则@Cacheable注解无效，理论上可以用@Order控制顺序
     private ISysMenuService menuService;
 
     @Autowired
-    @Lazy //就是这里，必须延时加载，根本原因是bean实例化的顺序上，shiro的bean必须要先实例化，否则@Cacheable注解无效，理论上可以用@Order控制顺序
     private ISysRoleService roleService;
 
     @Autowired
-    @Lazy //就是这里，必须延时加载，根本原因是bean实例化的顺序上，shiro的bean必须要先实例化，否则@Cacheable注解无效，理论上可以用@Order控制顺序
     private SysLoginService loginService;
 
     /**
@@ -144,4 +126,20 @@ public class UserRealm extends AuthorizingRealm
     {
         this.clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
     }
+
+    @Override
+    protected Object getAuthorizationCacheKey(PrincipalCollection principals) {
+
+        Object obj = principals.getPrimaryPrincipal();
+        StringBuilder key;
+        if(obj instanceof SysUser){
+            SysUser user = (SysUser)obj;
+            key = new StringBuilder(user.getLoginName());
+        }else{
+            key = new StringBuilder(ShiroUtils.getSysUser().getLoginName());
+        }
+
+        return key.append(":authorization").toString();
+    }
+
 }
