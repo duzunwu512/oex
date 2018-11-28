@@ -3,6 +3,8 @@ package com.gzl.dge.framework.shiro.cache;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import com.gzl.dge.common.constant.RedisConstants;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,7 +22,7 @@ public class RedisCache<K, V> implements Cache<K, V>
     /**
      * 用于shiro的cache的名字
      */
-    private String cacheName = "shiro_redis_session";
+    private String cacheName = RedisConstants.REDIS_SHIRO_SESSION_ID;
 
     private RedisTemplate<K, V> redisTemplate; // 通过构造方法注入该对象
 
@@ -43,7 +45,7 @@ public class RedisCache<K, V> implements Cache<K, V>
 
     public String keyPrefix(String cacheName)
     {
-        return cacheName + ":";
+        return cacheName;
     }
 
     /**

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import com.gzl.dge.common.constant.RedisConstants;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.ValidatingSession;
 import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
@@ -44,7 +45,7 @@ public class RedisSessionDAO extends EnterpriseCacheSessionDAO
     /**
      * shiro redis 前缀
      */
-    private final static String SYS_SHIRO_SESSION_ID = "sys-shiro-session-id:";
+    private final static String SYS_SHIRO_SESSION_ID =  RedisConstants.REDIS_SHIRO_SESSION_ID;
 
     /**
      * 上次同步数据库的时间戳

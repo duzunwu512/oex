@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.gzl.dge.common.constant.RedisConstants;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -105,8 +106,8 @@ public class RedisConfig extends CachingConfigurerSupport {
 			public String getTokenByGsid(String gsid) 
          */
         //SsoCache和BasicDataCache进行过期时间配置
-        redisCacheConfigurationMap.put("menuCache", this.getRedisCacheConfigurationWithTtl(24*60*60));
-        redisCacheConfigurationMap.put("BasicDataCache", this.getRedisCacheConfigurationWithTtl(30*60));
+        redisCacheConfigurationMap.put(RedisConstants.REDIS_KEY_MENU, this.getRedisCacheConfigurationWithTtl(24*60*60));
+        redisCacheConfigurationMap.put(RedisConstants.REDIS_KEY_BASE_DATE, this.getRedisCacheConfigurationWithTtl(30*60));
         return redisCacheConfigurationMap;
     }
 

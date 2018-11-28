@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    
+    <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+					<a class="btn btn-success btn-outline" id="clearServerCache" href="javascrip:void(0);">
+						<i class="fa fa-trash-o"> </i> 清除服务器缓存
+					</a>
+
+					<a class="btn btn-success btn-outline" id="clearBroseCache" href="javascrip:void(0);">
+						<i class="fa fa-trash-o"> </i> 清除浏览器缓存
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript">
+		var prefix = ctx + "tool/clear";
+	
+		$(function() {
+		    $("#clearServerCache").on("click", function () {
+                $.modal.confirm("确定清除服务器缓存吗？", function() {
+                    $.modal.loading("正在清除服务器缓存，请稍后...");
+                    $.post(prefix+"/done", {}, function (rslt) {
+                        $.modal.closeLoading();
+						if(rslt.code=='0'){
+                            layer.msg('清除成功！', { icon: 1 });
+                        }else{
+                            layer.msg('清除失败！', { icon: 3 });
+						}
+                    },"json");
+
+                });
+            });
+
+            $("#clearBroseCache").on("click", function () {
+                $.modal.confirm("确定要浏览器端吗？", function() {
+
+					//清除所有cookie函数
+                    function clearAllCookie() {
+                        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+                        if(keys) {
+                            for(var i = keys.length; i--;)
+                                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+                        }
+                    }
+                    layer.msg('执行成功,正在生成代码请稍后…', { icon: 1 });
+                });
+            });
+		});
+	
+	</script>
+</body>
+</html>
