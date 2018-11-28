@@ -20,6 +20,7 @@ import com.gzl.dge.common.annotation.Log;
 import com.gzl.dge.common.enums.BusinessType;
 import com.gzl.dge.oex.domain.Area;
 import com.gzl.dge.oex.service.IAreaService;
+import com.gzl.dge.framework.util.ShiroUtils;
 import com.gzl.dge.framework.web.base.BaseController;
 import com.gzl.dge.framework.web.page.TableDataInfo;
 import com.gzl.dge.common.base.AjaxResult;
@@ -97,6 +98,7 @@ public class AreaController extends BaseController
 	@ResponseBody
 	public AjaxResult addSave(Area area)
 	{		
+		area.setCreateBy(ShiroUtils.getLoginName());
 		return toAjax(areaService.insertArea(area));
 	}
 
@@ -108,6 +110,8 @@ public class AreaController extends BaseController
 	{
 		Area area = areaService.selectAreaById(id);
 		mmap.put("area", area);
+		Area areap = areaService.selectAreaById(area.getParentId());
+		mmap.put("areap", areap);
 	    return prefix + "/edit";
 	}
 	
@@ -120,6 +124,7 @@ public class AreaController extends BaseController
 	@ResponseBody
 	public AjaxResult editSave(Area area)
 	{		
+		
 		return toAjax(areaService.updateArea(area));
 	}
 	
