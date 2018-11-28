@@ -32,7 +32,7 @@ public class AreaServiceImpl implements IAreaService
      * @return 地区信息
      */
     @Override
-	public Area selectAreaById(Integer id)
+	public Area selectAreaById(Long id)
 	{
 	    return areaMapper.selectAreaById(id);
 	}

@@ -16,9 +16,9 @@ public class Area extends BaseEntity
 	private static final long serialVersionUID = 1L;
 	
 	/** ID */
-	private Integer id;
+	private Long id;
 	/** 父级 */
-	private Integer parentId;
+	private Long parentId;
 	/** 区域名称 */
 	private String name;
 	/** 类别: 0-国家 1-省份 2-市 3-区 */
@@ -40,21 +40,21 @@ public class Area extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setId(Integer id) 
+	public void setId(Long id)
 	{
 		this.id = id;
 	}
 
-	public Integer getId() 
+	public Long getId()
 	{
 		return id;
 	}
-	public void setParentId(Integer parentId) 
+	public void setParentId(Long parentId)
 	{
 		this.parentId = parentId;
 	}
 
-	public Integer getParentId() 
+	public Long getParentId()
 	{
 		return parentId;
 	}

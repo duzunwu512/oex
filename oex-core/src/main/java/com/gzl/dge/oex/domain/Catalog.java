@@ -16,9 +16,9 @@ public class Catalog extends BaseEntity
 	private static final long serialVersionUID = 1L;
 	
 	/** ID */
-	private Long iD;
+	private Long id;
 	/** 类别名称 */
-	private String nAME;
+	private String name;
 	/** 父类别 */
 	private Long parentId;
 	/** 父子关系（格式：_父ID_子ID_子子ID_... ...） */
@@ -36,23 +36,23 @@ public class Catalog extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id)
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId()
 	{
-		return iD;
+		return id;
 	}
-	public void setNAME(String nAME) 
+	public void setName(String name)
 	{
-		this.nAME = nAME;
+		this.name = name;
 	}
 
-	public String getNAME() 
+	public String getName()
 	{
-		return nAME;
+		return name;
 	}
 	public void setParentId(Long parentId) 
 	{
@@ -129,8 +129,8 @@ public class Catalog extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
-            .append("nAME", getNAME())
+            .append("iD", getId())
+            .append("name", getName())
             .append("parentId", getParentId())
             .append("parentSub", getParentSub())
             .append("status", getStatus())

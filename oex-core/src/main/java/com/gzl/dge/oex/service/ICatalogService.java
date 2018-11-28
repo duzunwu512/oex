@@ -2,6 +2,7 @@ package com.gzl.dge.oex.service;
 
 import com.gzl.dge.oex.domain.Catalog;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 考试类别 服务层
@@ -14,10 +15,10 @@ public interface ICatalogService
 	/**
      * 查询考试类别信息
      * 
-     * @param iD 考试类别ID
+     * @param id 考试类别ID
      * @return 考试类别信息
      */
-	public Catalog selectCatalogById(Long iD);
+	public Catalog selectCatalogById(Long id);
 	
 	/**
      * 查询考试类别列表
@@ -50,5 +51,7 @@ public interface ICatalogService
      * @return 结果
      */
 	public int deleteCatalogByIds(String ids);
+
+	public List<Map<String, Object>> selectCatalogTree();
 	
 }

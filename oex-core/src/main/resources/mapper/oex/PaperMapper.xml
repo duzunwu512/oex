@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Paper" id="PaperResult">
         <result property="iD"    column="ID"    />
-        <result property="nAME"    column="NAME"    />
+        <result property="name"    column="NAME"    />
         <result property="totalScore"    column="total_score"    />
         <result property="areaId"    column="area_id"    />
         <result property="catalogId"    column="catalog_id"    />
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectPaperVo"/>
         <where>  
             <if test="iD != null "> and ID = #{iD}</if>
-             <if test="nAME != null  and nAME != '' "> and NAME = #{nAME}</if>
+             <if test="name != null  and name != '' "> and NAME = #{name}</if>
              <if test="totalScore != null "> and total_score = #{totalScore}</if>
              <if test="areaId != null "> and area_id = #{areaId}</if>
              <if test="catalogId != null "> and catalog_id = #{catalogId}</if>
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into oex_paper
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="iD != null  ">ID,</if>
-			<if test="nAME != null  and nAME != ''  ">NAME,</if>
+			<if test="name != null  and name != ''  ">NAME,</if>
 			<if test="totalScore != null  ">total_score,</if>
 			<if test="areaId != null  ">area_id,</if>
 			<if test="catalogId != null  ">catalog_id,</if>
@@ -70,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="iD != null  ">#{iD},</if>
-			<if test="nAME != null  and nAME != ''  ">#{nAME},</if>
+			<if test="name != null  and name != ''  ">#{name},</if>
 			<if test="totalScore != null  ">#{totalScore},</if>
 			<if test="areaId != null  ">#{areaId},</if>
 			<if test="catalogId != null  ">#{catalogId},</if>
@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updatePaper" parameterType="Paper">
         update oex_paper
         <trim prefix="SET" suffixOverrides=",">
-            <if test="nAME != null  and nAME != ''  ">NAME = #{nAME},</if>
+            <if test="name != null  and name != ''  ">NAME = #{name},</if>
             <if test="totalScore != null  ">total_score = #{totalScore},</if>
             <if test="areaId != null  ">area_id = #{areaId},</if>
             <if test="catalogId != null  ">catalog_id = #{catalogId},</if>

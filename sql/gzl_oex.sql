@@ -171,7 +171,7 @@ create table oex_catalog
 	primary key (ID)
 ) engine=innodb auto_increment=100 default charset=utf8 comment = '考试类别';
 
-
+insert into oex_catalog values(1,  '考试类别', 0,       '_1', '0','admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '考试类别');
 
 
 -- ----------------------------
@@ -539,28 +539,28 @@ values('考试类别删除', @parentId, '4',  '#',  'F', '0', 'oex:catalog:remov
 
 -- 3，试卷名称菜单
 insert into sys_menu (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试卷名称', '4', '3', '/oex/paper', 'C', '0', 'oex:paper:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '试卷名称菜单');
+values('试卷管理', '4', '3', '/oex/paper', 'C', '0', 'oex:paper:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '试卷名称菜单');
 
 -- 按钮父菜单ID
 SELECT @parentId := LAST_INSERT_ID();
 
 -- 按钮 SQL
 insert into sys_menu  (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试卷名称查询', @parentId, '1',  '#',  'F', '0', 'oex:paper:list',         '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
+values('试卷查询', @parentId, '1',  '#',  'F', '0', 'oex:paper:list',         '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
 
 insert into sys_menu  (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试卷名称新增', @parentId, '2',  '#',  'F', '0', 'oex:paper:add',          '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
+values('试卷新增', @parentId, '2',  '#',  'F', '0', 'oex:paper:add',          '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
 
 insert into sys_menu  (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试卷名称修改', @parentId, '3',  '#',  'F', '0', 'oex:paper:edit',         '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
+values('试卷修改', @parentId, '3',  '#',  'F', '0', 'oex:paper:edit',         '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
 
 insert into sys_menu  (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试卷名称删除', @parentId, '4',  '#',  'F', '0', 'oex:paper:remove',       '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
+values('试卷删除', @parentId, '4',  '#',  'F', '0', 'oex:paper:remove',       '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '');
 
 
 -- 4，试题
 insert into sys_menu (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('试题', '4', '4', '/oex/question', 'C', '0', 'oex:question:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '试题菜单');
+values('试题管理', '4', '4', '/oex/question', 'C', '0', 'oex:question:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '试题菜单');
 
 -- 按钮父菜单ID
 SELECT @parentId := LAST_INSERT_ID();
@@ -602,7 +602,7 @@ values('前台用户删除', @parentId, '4',  '#',  'F', '0', 'oex:user:remove',
 
 -- 6，用户试卷
 insert into sys_menu (menu_name, parent_id, order_num, url,menu_type, visible, perms, icon, create_by, create_time, update_by, update_time, remark)
-values('用户做题', '4', '6', '/oex/userQuestion', 'C', '0', 'oex:userQuestion:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '用户做题菜单');
+values('用户做题管理', '4', '6', '/oex/userQuestion', 'C', '0', 'oex:userQuestion:view', '#', 'admin', '2018-03-01', 'ry', '2018-03-01', '用户做题菜单');
 
 -- 按钮父菜单ID
 SELECT @parentId := LAST_INSERT_ID();

@@ -17,7 +17,7 @@ public interface AreaMapper
      * @param id 地区ID
      * @return 地区信息
      */
-	public Area selectAreaById(Integer id);
+	public Area selectAreaById(Long id);
 	
 	/**
      * 查询地区列表

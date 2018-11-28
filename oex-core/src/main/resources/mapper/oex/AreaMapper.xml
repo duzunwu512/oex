@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </where>
     </select>
     
-    <select id="selectAreaById" parameterType="Integer" resultMap="AreaResult">
+    <select id="selectAreaById" parameterType="Long" resultMap="AreaResult">
         <include refid="selectAreaVo"/>
         where id = #{id}
     </select>
@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </update>
 
-	<delete id="deleteAreaById" parameterType="Integer">
+	<delete id="deleteAreaById" parameterType="Long">
         delete from oex_area where id = #{id}
     </delete>
 	

@@ -1,6 +1,13 @@
 package com.gzl.dge.oex.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.gzl.dge.common.constant.UserConstants;
+import com.gzl.dge.common.utils.StringUtils;
+import com.gzl.dge.oex.domain.Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gzl.dge.oex.mapper.CatalogMapper;
@@ -23,13 +30,13 @@ public class CatalogServiceImpl implements ICatalogService
 	/**
      * 查询考试类别信息
      * 
-     * @param iD 考试类别ID
+     * @param id 考试类别ID
      * @return 考试类别信息
      */
     @Override
-	public Catalog selectCatalogById(Long iD)
+	public Catalog selectCatalogById(Long id)
 	{
-	    return catalogMapper.selectCatalogById(iD);
+	    return catalogMapper.selectCatalogById(id);
 	}
 	
 	/**
@@ -79,5 +86,36 @@ public class CatalogServiceImpl implements ICatalogService
 	{
 		return catalogMapper.deleteCatalogByIds(Convert.toStrArray(ids));
 	}
+
+
+
+	@Override
+	public List<Map<String, Object>> selectCatalogTree(){
+		List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
+		List<Catalog> cataList = selectCatalogList(new Catalog());
+		trees = getTrees(cataList, false);
+		return trees;
+	}
+
+	private List<Map<String, Object>> getTrees(List<Catalog> cataList, boolean isCheck)
+	{
+
+		List<Map<String, Object>> trees = new ArrayList<Map<String, Object>>();
+		for (Catalog cata : cataList)
+		{
+			if (UserConstants.DEPT_NORMAL.equals(cata.getStatus()))
+			{
+				Map<String, Object> deptMap = new HashMap<String, Object>();
+				deptMap.put("id", cata.getId());
+				deptMap.put("pId", cata.getParentId());
+				deptMap.put("name", cata.getName());
+				deptMap.put("title", cata.getName());
+				deptMap.put("checked", false);
+				trees.add(deptMap);
+			}
+		}
+		return trees;
+	}
+
 	
 }

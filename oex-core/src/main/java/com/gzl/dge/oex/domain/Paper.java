@@ -21,7 +21,7 @@ public class Paper extends BaseEntity
 	/** ID */
 	private Long iD;
 	/** 试卷名称 */
-	private String nAME;
+	private String name;
 	/** 总分 */
 	private BigDecimal totalScore;
 	/** 地区 */
@@ -56,14 +56,14 @@ public class Paper extends BaseEntity
 	{
 		return iD;
 	}
-	public void setNAME(String nAME) 
+	public void setName(String name)
 	{
-		this.nAME = nAME;
+		this.name = name;
 	}
 
-	public String getNAME() 
+	public String getName()
 	{
-		return nAME;
+		return name;
 	}
 	public void setTotalScore(BigDecimal totalScore) 
 	{
@@ -177,7 +177,7 @@ public class Paper extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("iD", getID())
-            .append("nAME", getNAME())
+            .append("name", getName())
             .append("totalScore", getTotalScore())
             .append("areaId", getAreaId())
             .append("catalogId", getCatalogId())

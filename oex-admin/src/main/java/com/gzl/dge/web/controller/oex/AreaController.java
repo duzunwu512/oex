@@ -1,30 +1,23 @@
 package com.gzl.dge.web.controller.oex;
 
-import java.util.List;
-import java.util.Map;
-
+import com.gzl.dge.common.annotation.Log;
+import com.gzl.dge.common.base.AjaxResult;
+import com.gzl.dge.common.enums.BusinessType;
+import com.gzl.dge.common.utils.ExcelUtil;
+import com.gzl.dge.framework.util.ShiroUtils;
+import com.gzl.dge.framework.web.base.BaseController;
+import com.gzl.dge.framework.web.page.TableDataInfo;
+import com.gzl.dge.oex.domain.Area;
+import com.gzl.dge.oex.service.IAreaService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import com.gzl.dge.common.annotation.Log;
-import com.gzl.dge.common.enums.BusinessType;
-import com.gzl.dge.oex.domain.Area;
-import com.gzl.dge.oex.service.IAreaService;
-import com.gzl.dge.framework.util.ShiroUtils;
-import com.gzl.dge.framework.web.base.BaseController;
-import com.gzl.dge.framework.web.page.TableDataInfo;
-import com.gzl.dge.common.base.AjaxResult;
-import com.gzl.dge.common.utils.ExcelUtil;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 地区 信息操作处理
@@ -84,7 +77,7 @@ public class AreaController extends BaseController
 		if(StringUtils.isBlank(parentId)){
 			parentId = "1";
 		}
-		Area area = areaService.selectAreaById(new Integer(parentId));
+		Area area = areaService.selectAreaById(new Long(parentId));
 		model.addAttribute("area", area);
 	    return prefix + "/add";
 	}
@@ -106,7 +99,7 @@ public class AreaController extends BaseController
 	 * 修改地区
 	 */
 	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable("id") Integer id, ModelMap mmap)
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
 		Area area = areaService.selectAreaById(id);
 		mmap.put("area", area);

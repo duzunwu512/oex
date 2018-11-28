@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gzl.dge.oex.mapper.CatalogMapper">
     
     <resultMap type="Catalog" id="CatalogResult">
-        <result property="iD"    column="ID"    />
-        <result property="nAME"    column="NAME"    />
+        <result property="id"    column="ID"    />
+        <result property="name"    column="NAME"    />
         <result property="parentId"    column="PARENT_ID"    />
         <result property="parentSub"    column="PARENT_SUB"    />
         <result property="status"    column="status"    />
@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectCatalogList" parameterType="Catalog" resultMap="CatalogResult">
         <include refid="selectCatalogVo"/>
         <where>  
-            <if test="iD != null "> and ID = #{iD}</if>
-             <if test="nAME != null  and nAME != '' "> and NAME = #{nAME}</if>
+            <if test="id != null "> and ID = #{id}</if>
+             <if test="name != null  and name != '' "> and NAME = #{name}</if>
              <if test="parentId != null "> and PARENT_ID = #{parentId}</if>
              <if test="parentSub != null  and parentSub != '' "> and PARENT_SUB = #{parentSub}</if>
              <if test="status != null  and status != '' "> and status = #{status}</if>
@@ -39,14 +39,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectCatalogById" parameterType="Long" resultMap="CatalogResult">
         <include refid="selectCatalogVo"/>
-        where ID = #{iD}
+        where ID = #{id}
     </select>
         
     <insert id="insertCatalog" parameterType="Catalog">
         insert into oex_catalog
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">ID,</if>
-			<if test="nAME != null  and nAME != ''  ">NAME,</if>
+			<if test="id != null  ">ID,</if>
+			<if test="name != null  and name != ''  ">NAME,</if>
 			<if test="parentId != null  ">PARENT_ID,</if>
 			<if test="parentSub != null  and parentSub != ''  ">PARENT_SUB,</if>
 			<if test="status != null  and status != ''  ">status,</if>
@@ -57,8 +57,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="remark != null  and remark != ''  ">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">#{iD},</if>
-			<if test="nAME != null  and nAME != ''  ">#{nAME},</if>
+			<if test="id != null  ">#{id},</if>
+			<if test="name != null  and name != ''  ">#{name},</if>
 			<if test="parentId != null  ">#{parentId},</if>
 			<if test="parentSub != null  and parentSub != ''  ">#{parentSub},</if>
 			<if test="status != null  and status != ''  ">#{status},</if>
@@ -73,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateCatalog" parameterType="Catalog">
         update oex_catalog
         <trim prefix="SET" suffixOverrides=",">
-            <if test="nAME != null  and nAME != ''  ">NAME = #{nAME},</if>
+            <if test="name != null  and name != ''  ">NAME = #{name},</if>
             <if test="parentId != null  ">PARENT_ID = #{parentId},</if>
             <if test="parentSub != null  and parentSub != ''  ">PARENT_SUB = #{parentSub},</if>
             <if test="status != null  and status != ''  ">status = #{status},</if>
@@ -83,17 +83,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null  ">update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
         </trim>
-        where ID = #{iD}
+        where ID = #{id}
     </update>
 
 	<delete id="deleteCatalogById" parameterType="Long">
-        delete from oex_catalog where ID = #{iD}
+        delete from oex_catalog where ID = #{id}
     </delete>
 	
     <delete id="deleteCatalogByIds" parameterType="String">
         delete from oex_catalog where ID in 
-        <foreach item="iD" collection="array" open="(" separator="," close=")">
-            #{iD}
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
     

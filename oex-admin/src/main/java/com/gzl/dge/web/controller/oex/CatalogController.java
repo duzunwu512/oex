@@ -1,6 +1,10 @@
 package com.gzl.dge.web.controller.oex;
 
 import java.util.List;
+import java.util.Map;
+
+import com.gzl.dge.oex.domain.Area;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,9 +75,14 @@ public class CatalogController extends BaseController
 	/**
 	 * 新增考试类别
 	 */
-	@GetMapping("/add")
-	public String add()
+	@GetMapping("/add/{parentId}")
+	public String add(@PathVariable String parentId, ModelMap model)
 	{
+		if(StringUtils.isBlank(parentId)){
+			parentId = "1";
+		}
+		Catalog catalog = catalogService.selectCatalogById(new Long(parentId));
+		model.addAttribute("catalog", catalog);
 	    return prefix + "/add";
 	}
 	
@@ -92,11 +101,13 @@ public class CatalogController extends BaseController
 	/**
 	 * 修改考试类别
 	 */
-	@GetMapping("/edit/{iD}")
-	public String edit(@PathVariable("iD") Long iD, ModelMap mmap)
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
-		Catalog catalog = catalogService.selectCatalogById(iD);
+		Catalog catalog = catalogService.selectCatalogById(id);
 		mmap.put("catalog", catalog);
+		Catalog areap = catalogService.selectCatalogById(catalog.getParentId());
+		mmap.put("catalogp", areap);
 	    return prefix + "/edit";
 	}
 	
@@ -122,6 +133,15 @@ public class CatalogController extends BaseController
 	public AjaxResult remove(String ids)
 	{		
 		return toAjax(catalogService.deleteCatalogByIds(ids));
+	}
+
+
+	@GetMapping("/treeData")
+	@ResponseBody
+	public List<Map<String, Object>> treeData()
+	{
+		List<Map<String, Object>> tree = catalogService.selectCatalogTree();
+		return tree;
 	}
 	
 }
