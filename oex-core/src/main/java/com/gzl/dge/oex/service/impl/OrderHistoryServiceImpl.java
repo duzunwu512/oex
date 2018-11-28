@@ -9,10 +9,10 @@ import com.gzl.dge.oex.service.IOrderHistoryService;
 import com.gzl.dge.common.support.Convert;
 
 /**
- * 订单收款凭证 服务层实现
+ * 订单付款记录 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class OrderHistoryServiceImpl implements IOrderHistoryService 
@@ -21,10 +21,10 @@ public class OrderHistoryServiceImpl implements IOrderHistoryService
 	private OrderHistoryMapper orderHistoryMapper;
 
 	/**
-     * 查询订单收款凭证信息
+     * 查询订单付款记录信息
      * 
-     * @param id 订单收款凭证ID
-     * @return 订单收款凭证信息
+     * @param id 订单付款记录ID
+     * @return 订单付款记录信息
      */
     @Override
 	public OrderHistory selectOrderHistoryById(Long id)
@@ -33,10 +33,10 @@ public class OrderHistoryServiceImpl implements IOrderHistoryService
 	}
 	
 	/**
-     * 查询订单收款凭证列表
+     * 查询订单付款记录列表
      * 
-     * @param orderHistory 订单收款凭证信息
-     * @return 订单收款凭证集合
+     * @param orderHistory 订单付款记录信息
+     * @return 订单付款记录集合
      */
 	@Override
 	public List<OrderHistory> selectOrderHistoryList(OrderHistory orderHistory)
@@ -45,9 +45,9 @@ public class OrderHistoryServiceImpl implements IOrderHistoryService
 	}
 	
     /**
-     * 新增订单收款凭证
+     * 新增订单付款记录
      * 
-     * @param orderHistory 订单收款凭证信息
+     * @param orderHistory 订单付款记录信息
      * @return 结果
      */
 	@Override
@@ -57,9 +57,9 @@ public class OrderHistoryServiceImpl implements IOrderHistoryService
 	}
 	
 	/**
-     * 修改订单收款凭证
+     * 修改订单付款记录
      * 
-     * @param orderHistory 订单收款凭证信息
+     * @param orderHistory 订单付款记录信息
      * @return 结果
      */
 	@Override
@@ -69,7 +69,7 @@ public class OrderHistoryServiceImpl implements IOrderHistoryService
 	}
 
 	/**
-     * 删除订单收款凭证对象
+     * 删除订单付款记录对象
      * 
      * @param ids 需要删除的数据ID
      * @return 结果

@@ -20,10 +20,10 @@ import com.gzl.dge.common.base.AjaxResult;
 import com.gzl.dge.common.utils.ExcelUtil;
 
 /**
- * 订单收款凭证 信息操作处理
+ * 订单付款记录 信息操作处理
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Controller
 @RequestMapping("/oex/orderHistory")
@@ -42,7 +42,7 @@ public class OrderHistoryController extends BaseController
 	}
 	
 	/**
-	 * 查询订单收款凭证列表
+	 * 查询订单付款记录列表
 	 */
 	@RequiresPermissions("oex:orderHistory:list")
 	@PostMapping("/list")
@@ -56,7 +56,7 @@ public class OrderHistoryController extends BaseController
 	
 	
 	/**
-	 * 导出订单收款凭证列表
+	 * 导出订单付款记录列表
 	 */
 	@RequiresPermissions("oex:orderHistory:export")
     @PostMapping("/export")
@@ -69,7 +69,7 @@ public class OrderHistoryController extends BaseController
     }
 	
 	/**
-	 * 新增订单收款凭证
+	 * 新增订单付款记录
 	 */
 	@GetMapping("/add")
 	public String add()
@@ -78,10 +78,10 @@ public class OrderHistoryController extends BaseController
 	}
 	
 	/**
-	 * 新增保存订单收款凭证
+	 * 新增保存订单付款记录
 	 */
 	@RequiresPermissions("oex:orderHistory:add")
-	@Log(title = "订单收款凭证", businessType = BusinessType.INSERT)
+	@Log(title = "订单付款记录", businessType = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
 	public AjaxResult addSave(OrderHistory orderHistory)
@@ -90,7 +90,7 @@ public class OrderHistoryController extends BaseController
 	}
 
 	/**
-	 * 修改订单收款凭证
+	 * 修改订单付款记录
 	 */
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable("id") Long id, ModelMap mmap)
@@ -101,10 +101,10 @@ public class OrderHistoryController extends BaseController
 	}
 	
 	/**
-	 * 修改保存订单收款凭证
+	 * 修改保存订单付款记录
 	 */
 	@RequiresPermissions("oex:orderHistory:edit")
-	@Log(title = "订单收款凭证", businessType = BusinessType.UPDATE)
+	@Log(title = "订单付款记录", businessType = BusinessType.UPDATE)
 	@PostMapping("/edit")
 	@ResponseBody
 	public AjaxResult editSave(OrderHistory orderHistory)
@@ -113,10 +113,10 @@ public class OrderHistoryController extends BaseController
 	}
 	
 	/**
-	 * 删除订单收款凭证
+	 * 删除订单付款记录
 	 */
 	@RequiresPermissions("oex:orderHistory:remove")
-	@Log(title = "订单收款凭证", businessType = BusinessType.DELETE)
+	@Log(title = "订单付款记录", businessType = BusinessType.DELETE)
 	@PostMapping( "/remove")
 	@ResponseBody
 	public AjaxResult remove(String ids)

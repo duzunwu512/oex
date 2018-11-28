@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 用户收藏试题 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class UserCollectServiceImpl implements IUserCollectService 
@@ -23,13 +23,13 @@ public class UserCollectServiceImpl implements IUserCollectService
 	/**
      * 查询用户收藏试题信息
      * 
-     * @param iD 用户收藏试题ID
+     * @param id 用户收藏试题ID
      * @return 用户收藏试题信息
      */
     @Override
-	public UserCollect selectUserCollectById(Long iD)
+	public UserCollect selectUserCollectById(Long id)
 	{
-	    return userCollectMapper.selectUserCollectById(iD);
+	    return userCollectMapper.selectUserCollectById(id);
 	}
 	
 	/**

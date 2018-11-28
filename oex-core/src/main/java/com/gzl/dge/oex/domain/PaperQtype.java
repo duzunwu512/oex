@@ -1,25 +1,24 @@
 package com.gzl.dge.oex.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 试卷题型表 oex_paper_qtype
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class PaperQtype extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
-	/** ID */
-	private Long iD;
+	/** id */
+	private Long id;
 	/** 题型名称 */
 	private String name;
 	/** 分值 */
@@ -28,9 +27,9 @@ public class PaperQtype extends BaseEntity
 	private String descpt;
 	/** 次序 */
 	private Integer seq;
-	/** 试卷ID */
+	/** 试卷id */
 	private Long paperId;
-	/** 试题分类ID */
+	/** 试题分类id */
 	private Long qtypeId;
 	/** 状态（0正常 1停用） */
 	private String status;
@@ -45,14 +44,14 @@ public class PaperQtype extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setName(String name) 
 	{
@@ -165,7 +164,7 @@ public class PaperQtype extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("name", getName())
             .append("score", getScore())
             .append("descpt", getDescpt())

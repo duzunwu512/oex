@@ -2,7 +2,6 @@ package com.gzl.dge.oex.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
 
 import java.math.BigDecimal;
@@ -12,17 +11,17 @@ import java.util.Date;
  * 订单表 oex_order
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class Order extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	/** id */
-	private Long iD;
+	private Long id;
 	/** 订单号 */
 	private String orderCode;
-	/** 用户ID */
+	/** 用户id */
 	private Long userId;
 	/** 订单总金额(以分为单位) */
 	private BigDecimal totalAmount;
@@ -34,7 +33,7 @@ public class Order extends BaseEntity
 	private String payType;
 	/** 支付日期 */
 	private Date payDate;
-	/** 产品ID */
+	/** 产品id */
 	private Long productId;
 	/** 开具发票标志 0 否 1 是 */
 	private String invoiceTag;
@@ -59,14 +58,14 @@ public class Order extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setOrderCode(String orderCode) 
 	{
@@ -242,7 +241,7 @@ public class Order extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("orderCode", getOrderCode())
             .append("userId", getUserId())
             .append("totalAmount", getTotalAmount())

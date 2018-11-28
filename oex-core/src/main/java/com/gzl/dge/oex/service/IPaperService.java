@@ -7,17 +7,17 @@ import java.util.List;
  * 试卷名称 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IPaperService 
 {
 	/**
      * 查询试卷名称信息
      * 
-     * @param iD 试卷名称ID
+     * @param id 试卷名称ID
      * @return 试卷名称信息
      */
-	public Paper selectPaperById(Long iD);
+	public Paper selectPaperById(Long id);
 	
 	/**
      * 查询试卷名称列表

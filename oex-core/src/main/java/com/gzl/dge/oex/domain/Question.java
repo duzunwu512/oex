@@ -1,55 +1,54 @@
 package com.gzl.dge.oex.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 试题表 oex_question
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class Question extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
-	/** ID */
-	private Long iD;
+	/** id */
+	private Long id;
 	/** 试题分类 1：单选；2：多选；3：填空；4：判断；5：问答 */
 	private Long qtypeId;
 	/** 1：极易；2：简单；3：适中；4：困难；5：极难 */
-	private Integer dIFFICULTY;
+	private Integer difficulty;
 	/** 题干 */
-	private String tITLE;
-	/** 选项A */
+	private String title;
+	/** 选项a */
 	private String optionA;
-	/** 选项B */
+	/** 选项b */
 	private String optionB;
-	/** 选项C */
+	/** 选项c */
 	private String optionC;
-	/** 选项D */
+	/** 选项d */
 	private String optionD;
-	/** 选项E */
+	/** 选项e */
 	private String optionE;
-	/** 选项F */
+	/** 选项f */
 	private String optionF;
-	/** 选项G */
+	/** 选项g */
 	private String optionG;
 	/** 答案 */
-	private String aNSWER;
+	private String answer;
 	/** 解析 */
-	private String aNALYSIS;
-	/** 试卷ID */
+	private String analysis;
+	/** 试卷id */
 	private Long paperId;
 	/** 排序 */
 	private Integer seq;
 	/** 分数 */
-	private BigDecimal sCORE;
+	private BigDecimal score;
 	/** 备注 */
 	private String descpt;
 	/** 状态（0正常 1停用） */
@@ -65,14 +64,14 @@ public class Question extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setQtypeId(Long qtypeId) 
 	{
@@ -83,23 +82,23 @@ public class Question extends BaseEntity
 	{
 		return qtypeId;
 	}
-	public void setDIFFICULTY(Integer dIFFICULTY) 
+	public void setDifficulty(Integer difficulty) 
 	{
-		this.dIFFICULTY = dIFFICULTY;
+		this.difficulty = difficulty;
 	}
 
-	public Integer getDIFFICULTY() 
+	public Integer getDifficulty() 
 	{
-		return dIFFICULTY;
+		return difficulty;
 	}
-	public void setTITLE(String tITLE) 
+	public void setTitle(String title) 
 	{
-		this.tITLE = tITLE;
+		this.title = title;
 	}
 
-	public String getTITLE() 
+	public String getTitle() 
 	{
-		return tITLE;
+		return title;
 	}
 	public void setOptionA(String optionA) 
 	{
@@ -164,23 +163,23 @@ public class Question extends BaseEntity
 	{
 		return optionG;
 	}
-	public void setANSWER(String aNSWER) 
+	public void setAnswer(String answer) 
 	{
-		this.aNSWER = aNSWER;
+		this.answer = answer;
 	}
 
-	public String getANSWER() 
+	public String getAnswer() 
 	{
-		return aNSWER;
+		return answer;
 	}
-	public void setANALYSIS(String aNALYSIS) 
+	public void setAnalysis(String analysis) 
 	{
-		this.aNALYSIS = aNALYSIS;
+		this.analysis = analysis;
 	}
 
-	public String getANALYSIS() 
+	public String getAnalysis() 
 	{
-		return aNALYSIS;
+		return analysis;
 	}
 	public void setPaperId(Long paperId) 
 	{
@@ -200,14 +199,14 @@ public class Question extends BaseEntity
 	{
 		return seq;
 	}
-	public void setSCORE(BigDecimal sCORE) 
+	public void setScore(BigDecimal score) 
 	{
-		this.sCORE = sCORE;
+		this.score = score;
 	}
 
-	public BigDecimal getSCORE() 
+	public BigDecimal getScore() 
 	{
-		return sCORE;
+		return score;
 	}
 	public void setDescpt(String descpt) 
 	{
@@ -275,10 +274,10 @@ public class Question extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("qtypeId", getQtypeId())
-            .append("dIFFICULTY", getDIFFICULTY())
-            .append("tITLE", getTITLE())
+            .append("difficulty", getDifficulty())
+            .append("title", getTitle())
             .append("optionA", getOptionA())
             .append("optionB", getOptionB())
             .append("optionC", getOptionC())
@@ -286,11 +285,11 @@ public class Question extends BaseEntity
             .append("optionE", getOptionE())
             .append("optionF", getOptionF())
             .append("optionG", getOptionG())
-            .append("aNSWER", getANSWER())
-            .append("aNALYSIS", getANALYSIS())
+            .append("answer", getAnswer())
+            .append("analysis", getAnalysis())
             .append("paperId", getPaperId())
             .append("seq", getSeq())
-            .append("sCORE", getSCORE())
+            .append("score", getScore())
             .append("descpt", getDescpt())
             .append("status", getStatus())
             .append("createBy", getCreateBy())

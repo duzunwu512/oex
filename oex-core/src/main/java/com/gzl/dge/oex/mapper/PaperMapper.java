@@ -7,17 +7,17 @@ import java.util.List;
  * 试卷名称 数据层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface PaperMapper 
 {
 	/**
      * 查询试卷名称信息
      * 
-     * @param iD 试卷名称ID
+     * @param id 试卷名称ID
      * @return 试卷名称信息
      */
-	public Paper selectPaperById(Long iD);
+	public Paper selectPaperById(Long id);
 	
 	/**
      * 查询试卷名称列表
@@ -46,17 +46,17 @@ public interface PaperMapper
 	/**
      * 删除试卷名称
      * 
-     * @param iD 试卷名称ID
+     * @param id 试卷名称ID
      * @return 结果
      */
-	public int deletePaperById(Long iD);
+	public int deletePaperById(Long id);
 	
 	/**
      * 批量删除试卷名称
      * 
-     * @param iDs 需要删除的数据ID
+     * @param ids 需要删除的数据ID
      * @return 结果
      */
-	public int deletePaperByIds(String[] iDs);
+	public int deletePaperByIds(String[] ids);
 	
 }

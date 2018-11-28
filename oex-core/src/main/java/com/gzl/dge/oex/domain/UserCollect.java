@@ -9,19 +9,19 @@ import java.util.Date;
  * 用户收藏试题表 oex_user_collect
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class UserCollect extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	/** id */
-	private Long iD;
-	/** 考试用户ID */
+	private Long id;
+	/** 考试用户id */
 	private Long userId;
-	/** 试卷ID */
+	/** 试卷id */
 	private Long paperId;
-	/** 试题ID */
+	/** 试题id */
 	private Long questionId;
 	/** 状态（0正常 1停用） */
 	private String status;
@@ -36,14 +36,14 @@ public class UserCollect extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setUserId(Long userId) 
 	{
@@ -129,7 +129,7 @@ public class UserCollect extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("userId", getUserId())
             .append("paperId", getPaperId())
             .append("questionId", getQuestionId())

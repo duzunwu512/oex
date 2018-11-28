@@ -9,19 +9,19 @@ import java.util.Date;
  * 用户产品表 oex_user_product
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class UserProduct extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	/** id */
-	private Long iD;
-	/** 考试用户ID */
+	private Long id;
+	/** 考试用户id */
 	private Long userId;
-	/** 产品ID */
+	/** 产品id */
 	private Long productId;
-	/** 试卷ID */
+	/** 试卷id */
 	private Long orderId;
 	/** 开始日期 */
 	private Date startDate;
@@ -40,14 +40,14 @@ public class UserProduct extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setUserId(Long userId) 
 	{
@@ -151,7 +151,7 @@ public class UserProduct extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("userId", getUserId())
             .append("productId", getProductId())
             .append("orderId", getOrderId())

@@ -23,7 +23,7 @@ import com.gzl.dge.common.utils.ExcelUtil;
  * 用户收藏试题 信息操作处理
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Controller
 @RequestMapping("/oex/userCollect")
@@ -92,10 +92,10 @@ public class UserCollectController extends BaseController
 	/**
 	 * 修改用户收藏试题
 	 */
-	@GetMapping("/edit/{iD}")
-	public String edit(@PathVariable("iD") Long iD, ModelMap mmap)
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
-		UserCollect userCollect = userCollectService.selectUserCollectById(iD);
+		UserCollect userCollect = userCollectService.selectUserCollectById(id);
 		mmap.put("userCollect", userCollect);
 	    return prefix + "/edit";
 	}

@@ -23,7 +23,7 @@ import com.gzl.dge.common.utils.ExcelUtil;
  * 订单 信息操作处理
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Controller
 @RequestMapping("/oex/order")
@@ -92,10 +92,10 @@ public class OrderController extends BaseController
 	/**
 	 * 修改订单
 	 */
-	@GetMapping("/edit/{iD}")
-	public String edit(@PathVariable("iD") Long iD, ModelMap mmap)
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
-		Order order = orderService.selectOrderById(iD);
+		Order order = orderService.selectOrderById(id);
 		mmap.put("order", order);
 	    return prefix + "/edit";
 	}

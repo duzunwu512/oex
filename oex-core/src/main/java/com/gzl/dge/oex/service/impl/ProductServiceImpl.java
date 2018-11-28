@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 产品 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class ProductServiceImpl implements IProductService 
@@ -23,13 +23,13 @@ public class ProductServiceImpl implements IProductService
 	/**
      * 查询产品信息
      * 
-     * @param iD 产品ID
+     * @param id 产品ID
      * @return 产品信息
      */
     @Override
-	public Product selectProductById(Long iD)
+	public Product selectProductById(Long id)
 	{
-	    return productMapper.selectProductById(iD);
+	    return productMapper.selectProductById(id);
 	}
 	
 	/**

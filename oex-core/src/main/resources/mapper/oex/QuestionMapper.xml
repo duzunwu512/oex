@@ -5,22 +5,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gzl.dge.oex.mapper.QuestionMapper">
     
     <resultMap type="Question" id="QuestionResult">
-        <result property="iD"    column="ID"    />
+        <result property="id"    column="id"    />
         <result property="qtypeId"    column="qtype_id"    />
-        <result property="dIFFICULTY"    column="DIFFICULTY"    />
-        <result property="tITLE"    column="TITLE"    />
-        <result property="optionA"    column="OPTION_A"    />
-        <result property="optionB"    column="OPTION_B"    />
-        <result property="optionC"    column="OPTION_C"    />
-        <result property="optionD"    column="OPTION_D"    />
-        <result property="optionE"    column="OPTION_E"    />
-        <result property="optionF"    column="OPTION_F"    />
-        <result property="optionG"    column="OPTION_G"    />
-        <result property="aNSWER"    column="ANSWER"    />
-        <result property="aNALYSIS"    column="ANALYSIS"    />
+        <result property="difficulty"    column="difficulty"    />
+        <result property="title"    column="title"    />
+        <result property="optionA"    column="option_a"    />
+        <result property="optionB"    column="option_b"    />
+        <result property="optionC"    column="option_c"    />
+        <result property="optionD"    column="option_d"    />
+        <result property="optionE"    column="option_e"    />
+        <result property="optionF"    column="option_f"    />
+        <result property="optionG"    column="option_g"    />
+        <result property="answer"    column="answer"    />
+        <result property="analysis"    column="analysis"    />
         <result property="paperId"    column="paper_id"    />
         <result property="seq"    column="seq"    />
-        <result property="sCORE"    column="SCORE"    />
+        <result property="score"    column="score"    />
         <result property="descpt"    column="descpt"    />
         <result property="status"    column="status"    />
         <result property="createBy"    column="create_by"    />
@@ -31,28 +31,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectQuestionVo">
-        select ID, qtype_id, DIFFICULTY, TITLE, OPTION_A, OPTION_B, OPTION_C, OPTION_D, OPTION_E, OPTION_F, OPTION_G, ANSWER, ANALYSIS, paper_id, seq, SCORE, descpt, status, create_by, create_time, update_by, update_time, remark from oex_question
+        select id, qtype_id, difficulty, title, option_a, option_b, option_c, option_d, option_e, option_f, option_g, answer, analysis, paper_id, seq, score, descpt, status, create_by, create_time, update_by, update_time, remark from oex_question
     </sql>
 	
     <select id="selectQuestionList" parameterType="Question" resultMap="QuestionResult">
         <include refid="selectQuestionVo"/>
         <where>  
-            <if test="iD != null "> and ID = #{iD}</if>
+            <if test="id != null "> and id = #{id}</if>
              <if test="qtypeId != null "> and qtype_id = #{qtypeId}</if>
-             <if test="dIFFICULTY != null "> and DIFFICULTY = #{dIFFICULTY}</if>
-             <if test="tITLE != null  and tITLE != '' "> and TITLE = #{tITLE}</if>
-             <if test="optionA != null  and optionA != '' "> and OPTION_A = #{optionA}</if>
-             <if test="optionB != null  and optionB != '' "> and OPTION_B = #{optionB}</if>
-             <if test="optionC != null  and optionC != '' "> and OPTION_C = #{optionC}</if>
-             <if test="optionD != null  and optionD != '' "> and OPTION_D = #{optionD}</if>
-             <if test="optionE != null  and optionE != '' "> and OPTION_E = #{optionE}</if>
-             <if test="optionF != null  and optionF != '' "> and OPTION_F = #{optionF}</if>
-             <if test="optionG != null  and optionG != '' "> and OPTION_G = #{optionG}</if>
-             <if test="aNSWER != null  and aNSWER != '' "> and ANSWER = #{aNSWER}</if>
-             <if test="aNALYSIS != null  and aNALYSIS != '' "> and ANALYSIS = #{aNALYSIS}</if>
+             <if test="difficulty != null "> and difficulty = #{difficulty}</if>
+             <if test="title != null  and title != '' "> and title = #{title}</if>
+             <if test="optionA != null  and optionA != '' "> and option_a = #{optionA}</if>
+             <if test="optionB != null  and optionB != '' "> and option_b = #{optionB}</if>
+             <if test="optionC != null  and optionC != '' "> and option_c = #{optionC}</if>
+             <if test="optionD != null  and optionD != '' "> and option_d = #{optionD}</if>
+             <if test="optionE != null  and optionE != '' "> and option_e = #{optionE}</if>
+             <if test="optionF != null  and optionF != '' "> and option_f = #{optionF}</if>
+             <if test="optionG != null  and optionG != '' "> and option_g = #{optionG}</if>
+             <if test="answer != null  and answer != '' "> and answer = #{answer}</if>
+             <if test="analysis != null  and analysis != '' "> and analysis = #{analysis}</if>
              <if test="paperId != null "> and paper_id = #{paperId}</if>
              <if test="seq != null "> and seq = #{seq}</if>
-             <if test="sCORE != null "> and SCORE = #{sCORE}</if>
+             <if test="score != null "> and score = #{score}</if>
              <if test="descpt != null  and descpt != '' "> and descpt = #{descpt}</if>
              <if test="status != null  and status != '' "> and status = #{status}</if>
              <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
@@ -65,28 +65,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectQuestionById" parameterType="Long" resultMap="QuestionResult">
         <include refid="selectQuestionVo"/>
-        where ID = #{iD}
+        where id = #{id}
     </select>
         
     <insert id="insertQuestion" parameterType="Question">
         insert into oex_question
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">ID,</if>
+			<if test="id != null  ">id,</if>
 			<if test="qtypeId != null  ">qtype_id,</if>
-			<if test="dIFFICULTY != null  ">DIFFICULTY,</if>
-			<if test="tITLE != null  and tITLE != ''  ">TITLE,</if>
-			<if test="optionA != null  and optionA != ''  ">OPTION_A,</if>
-			<if test="optionB != null  and optionB != ''  ">OPTION_B,</if>
-			<if test="optionC != null  and optionC != ''  ">OPTION_C,</if>
-			<if test="optionD != null  and optionD != ''  ">OPTION_D,</if>
-			<if test="optionE != null  and optionE != ''  ">OPTION_E,</if>
-			<if test="optionF != null  and optionF != ''  ">OPTION_F,</if>
-			<if test="optionG != null  and optionG != ''  ">OPTION_G,</if>
-			<if test="aNSWER != null  and aNSWER != ''  ">ANSWER,</if>
-			<if test="aNALYSIS != null  and aNALYSIS != ''  ">ANALYSIS,</if>
+			<if test="difficulty != null  ">difficulty,</if>
+			<if test="title != null  and title != ''  ">title,</if>
+			<if test="optionA != null  and optionA != ''  ">option_a,</if>
+			<if test="optionB != null  and optionB != ''  ">option_b,</if>
+			<if test="optionC != null  and optionC != ''  ">option_c,</if>
+			<if test="optionD != null  and optionD != ''  ">option_d,</if>
+			<if test="optionE != null  and optionE != ''  ">option_e,</if>
+			<if test="optionF != null  and optionF != ''  ">option_f,</if>
+			<if test="optionG != null  and optionG != ''  ">option_g,</if>
+			<if test="answer != null  and answer != ''  ">answer,</if>
+			<if test="analysis != null  and analysis != ''  ">analysis,</if>
 			<if test="paperId != null  ">paper_id,</if>
 			<if test="seq != null  ">seq,</if>
-			<if test="sCORE != null  ">SCORE,</if>
+			<if test="score != null  ">score,</if>
 			<if test="descpt != null  and descpt != ''  ">descpt,</if>
 			<if test="status != null  and status != ''  ">status,</if>
 			<if test="createBy != null  and createBy != ''  ">create_by,</if>
@@ -96,10 +96,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="remark != null  and remark != ''  ">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">#{iD},</if>
+			<if test="id != null  ">#{id},</if>
 			<if test="qtypeId != null  ">#{qtypeId},</if>
-			<if test="dIFFICULTY != null  ">#{dIFFICULTY},</if>
-			<if test="tITLE != null  and tITLE != ''  ">#{tITLE},</if>
+			<if test="difficulty != null  ">#{difficulty},</if>
+			<if test="title != null  and title != ''  ">#{title},</if>
 			<if test="optionA != null  and optionA != ''  ">#{optionA},</if>
 			<if test="optionB != null  and optionB != ''  ">#{optionB},</if>
 			<if test="optionC != null  and optionC != ''  ">#{optionC},</if>
@@ -107,11 +107,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="optionE != null  and optionE != ''  ">#{optionE},</if>
 			<if test="optionF != null  and optionF != ''  ">#{optionF},</if>
 			<if test="optionG != null  and optionG != ''  ">#{optionG},</if>
-			<if test="aNSWER != null  and aNSWER != ''  ">#{aNSWER},</if>
-			<if test="aNALYSIS != null  and aNALYSIS != ''  ">#{aNALYSIS},</if>
+			<if test="answer != null  and answer != ''  ">#{answer},</if>
+			<if test="analysis != null  and analysis != ''  ">#{analysis},</if>
 			<if test="paperId != null  ">#{paperId},</if>
 			<if test="seq != null  ">#{seq},</if>
-			<if test="sCORE != null  ">#{sCORE},</if>
+			<if test="score != null  ">#{score},</if>
 			<if test="descpt != null  and descpt != ''  ">#{descpt},</if>
 			<if test="status != null  and status != ''  ">#{status},</if>
 			<if test="createBy != null  and createBy != ''  ">#{createBy},</if>
@@ -126,20 +126,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         update oex_question
         <trim prefix="SET" suffixOverrides=",">
             <if test="qtypeId != null  ">qtype_id = #{qtypeId},</if>
-            <if test="dIFFICULTY != null  ">DIFFICULTY = #{dIFFICULTY},</if>
-            <if test="tITLE != null  and tITLE != ''  ">TITLE = #{tITLE},</if>
-            <if test="optionA != null  and optionA != ''  ">OPTION_A = #{optionA},</if>
-            <if test="optionB != null  and optionB != ''  ">OPTION_B = #{optionB},</if>
-            <if test="optionC != null  and optionC != ''  ">OPTION_C = #{optionC},</if>
-            <if test="optionD != null  and optionD != ''  ">OPTION_D = #{optionD},</if>
-            <if test="optionE != null  and optionE != ''  ">OPTION_E = #{optionE},</if>
-            <if test="optionF != null  and optionF != ''  ">OPTION_F = #{optionF},</if>
-            <if test="optionG != null  and optionG != ''  ">OPTION_G = #{optionG},</if>
-            <if test="aNSWER != null  and aNSWER != ''  ">ANSWER = #{aNSWER},</if>
-            <if test="aNALYSIS != null  and aNALYSIS != ''  ">ANALYSIS = #{aNALYSIS},</if>
+            <if test="difficulty != null  ">difficulty = #{difficulty},</if>
+            <if test="title != null  and title != ''  ">title = #{title},</if>
+            <if test="optionA != null  and optionA != ''  ">option_a = #{optionA},</if>
+            <if test="optionB != null  and optionB != ''  ">option_b = #{optionB},</if>
+            <if test="optionC != null  and optionC != ''  ">option_c = #{optionC},</if>
+            <if test="optionD != null  and optionD != ''  ">option_d = #{optionD},</if>
+            <if test="optionE != null  and optionE != ''  ">option_e = #{optionE},</if>
+            <if test="optionF != null  and optionF != ''  ">option_f = #{optionF},</if>
+            <if test="optionG != null  and optionG != ''  ">option_g = #{optionG},</if>
+            <if test="answer != null  and answer != ''  ">answer = #{answer},</if>
+            <if test="analysis != null  and analysis != ''  ">analysis = #{analysis},</if>
             <if test="paperId != null  ">paper_id = #{paperId},</if>
             <if test="seq != null  ">seq = #{seq},</if>
-            <if test="sCORE != null  ">SCORE = #{sCORE},</if>
+            <if test="score != null  ">score = #{score},</if>
             <if test="descpt != null  and descpt != ''  ">descpt = #{descpt},</if>
             <if test="status != null  and status != ''  ">status = #{status},</if>
             <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
@@ -148,17 +148,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null  ">update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
         </trim>
-        where ID = #{iD}
+        where id = #{id}
     </update>
 
 	<delete id="deleteQuestionById" parameterType="Long">
-        delete from oex_question where ID = #{iD}
+        delete from oex_question where id = #{id}
     </delete>
 	
     <delete id="deleteQuestionByIds" parameterType="String">
-        delete from oex_question where ID in 
-        <foreach item="iD" collection="array" open="(" separator="," close=")">
-            #{iD}
+        delete from oex_question where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
     

@@ -23,7 +23,7 @@ import com.gzl.dge.common.utils.ExcelUtil;
  * 试题 信息操作处理
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Controller
 @RequestMapping("/oex/question")
@@ -92,10 +92,10 @@ public class QuestionController extends BaseController
 	/**
 	 * 修改试题
 	 */
-	@GetMapping("/edit/{iD}")
-	public String edit(@PathVariable("iD") Long iD, ModelMap mmap)
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
-		Question question = questionService.selectQuestionById(iD);
+		Question question = questionService.selectQuestionById(id);
 		mmap.put("question", question);
 	    return prefix + "/edit";
 	}

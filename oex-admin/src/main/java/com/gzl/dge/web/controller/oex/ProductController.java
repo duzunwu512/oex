@@ -23,7 +23,7 @@ import com.gzl.dge.common.utils.ExcelUtil;
  * 产品 信息操作处理
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Controller
 @RequestMapping("/oex/product")
@@ -92,10 +92,10 @@ public class ProductController extends BaseController
 	/**
 	 * 修改产品
 	 */
-	@GetMapping("/edit/{iD}")
-	public String edit(@PathVariable("iD") Long iD, ModelMap mmap)
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, ModelMap mmap)
 	{
-		Product product = productService.selectProductById(iD);
+		Product product = productService.selectProductById(id);
 		mmap.put("product", product);
 	    return prefix + "/edit";
 	}

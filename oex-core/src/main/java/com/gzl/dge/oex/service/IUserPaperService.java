@@ -7,17 +7,17 @@ import java.util.List;
  * 用户试卷 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IUserPaperService 
 {
 	/**
      * 查询用户试卷信息
      * 
-     * @param iD 用户试卷ID
+     * @param id 用户试卷ID
      * @return 用户试卷信息
      */
-	public UserPaper selectUserPaperById(Long iD);
+	public UserPaper selectUserPaperById(Long id);
 	
 	/**
      * 查询用户试卷列表

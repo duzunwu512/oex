@@ -7,17 +7,17 @@ import java.util.List;
  * 用户做题 数据层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface UserQuestionMapper 
 {
 	/**
      * 查询用户做题信息
      * 
-     * @param iD 用户做题ID
+     * @param id 用户做题ID
      * @return 用户做题信息
      */
-	public UserQuestion selectUserQuestionById(Long iD);
+	public UserQuestion selectUserQuestionById(Long id);
 	
 	/**
      * 查询用户做题列表
@@ -46,17 +46,17 @@ public interface UserQuestionMapper
 	/**
      * 删除用户做题
      * 
-     * @param iD 用户做题ID
+     * @param id 用户做题ID
      * @return 结果
      */
-	public int deleteUserQuestionById(Long iD);
+	public int deleteUserQuestionById(Long id);
 	
 	/**
      * 批量删除用户做题
      * 
-     * @param iDs 需要删除的数据ID
+     * @param ids 需要删除的数据ID
      * @return 结果
      */
-	public int deleteUserQuestionByIds(String[] iDs);
+	public int deleteUserQuestionByIds(String[] ids);
 	
 }

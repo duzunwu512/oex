@@ -7,17 +7,17 @@ import java.util.List;
  * 产品 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IProductService 
 {
 	/**
      * 查询产品信息
      * 
-     * @param iD 产品ID
+     * @param id 产品ID
      * @return 产品信息
      */
-	public Product selectProductById(Long iD);
+	public Product selectProductById(Long id);
 	
 	/**
      * 查询产品列表

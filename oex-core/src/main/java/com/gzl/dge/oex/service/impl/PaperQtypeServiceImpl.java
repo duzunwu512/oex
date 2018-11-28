@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 试卷题型 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class PaperQtypeServiceImpl implements IPaperQtypeService 
@@ -23,13 +23,13 @@ public class PaperQtypeServiceImpl implements IPaperQtypeService
 	/**
      * 查询试卷题型信息
      * 
-     * @param iD 试卷题型ID
+     * @param id 试卷题型ID
      * @return 试卷题型信息
      */
     @Override
-	public PaperQtype selectPaperQtypeById(Long iD)
+	public PaperQtype selectPaperQtypeById(Long id)
 	{
-	    return paperQtypeMapper.selectPaperQtypeById(iD);
+	    return paperQtypeMapper.selectPaperQtypeById(id);
 	}
 	
 	/**

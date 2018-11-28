@@ -7,17 +7,17 @@ import java.util.List;
  * 订单 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IOrderService 
 {
 	/**
      * 查询订单信息
      * 
-     * @param iD 订单ID
+     * @param id 订单ID
      * @return 订单信息
      */
-	public Order selectOrderById(Long iD);
+	public Order selectOrderById(Long id);
 	
 	/**
      * 查询订单列表

@@ -7,17 +7,17 @@ import java.util.List;
  * 产品 数据层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface ProductMapper 
 {
 	/**
      * 查询产品信息
      * 
-     * @param iD 产品ID
+     * @param id 产品ID
      * @return 产品信息
      */
-	public Product selectProductById(Long iD);
+	public Product selectProductById(Long id);
 	
 	/**
      * 查询产品列表
@@ -46,17 +46,17 @@ public interface ProductMapper
 	/**
      * 删除产品
      * 
-     * @param iD 产品ID
+     * @param id 产品ID
      * @return 结果
      */
-	public int deleteProductById(Long iD);
+	public int deleteProductById(Long id);
 	
 	/**
      * 批量删除产品
      * 
-     * @param iDs 需要删除的数据ID
+     * @param ids 需要删除的数据ID
      * @return 结果
      */
-	public int deleteProductByIds(String[] iDs);
+	public int deleteProductByIds(String[] ids);
 	
 }

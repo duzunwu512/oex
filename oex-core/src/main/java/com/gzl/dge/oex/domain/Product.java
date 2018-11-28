@@ -1,25 +1,24 @@
 package com.gzl.dge.oex.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 产品表 oex_product
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class Product extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	/** id */
-	private Long iD;
+	private Long id;
 	/** 产品名称 */
 	private String name;
 	/** 起始日 */
@@ -43,14 +42,14 @@ public class Product extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setName(String name) 
 	{
@@ -154,7 +153,7 @@ public class Product extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("name", getName())
             .append("startDate", getStartDate())
             .append("endDate", getEndDate())

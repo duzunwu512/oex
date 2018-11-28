@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 用户试卷 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class UserPaperServiceImpl implements IUserPaperService 
@@ -23,13 +23,13 @@ public class UserPaperServiceImpl implements IUserPaperService
 	/**
      * 查询用户试卷信息
      * 
-     * @param iD 用户试卷ID
+     * @param id 用户试卷ID
      * @return 用户试卷信息
      */
     @Override
-	public UserPaper selectUserPaperById(Long iD)
+	public UserPaper selectUserPaperById(Long id)
 	{
-	    return userPaperMapper.selectUserPaperById(iD);
+	    return userPaperMapper.selectUserPaperById(id);
 	}
 	
 	/**

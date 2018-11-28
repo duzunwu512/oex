@@ -7,17 +7,17 @@ import java.util.List;
  * 用户做题 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IUserQuestionService 
 {
 	/**
      * 查询用户做题信息
      * 
-     * @param iD 用户做题ID
+     * @param id 用户做题ID
      * @return 用户做题信息
      */
-	public UserQuestion selectUserQuestionById(Long iD);
+	public UserQuestion selectUserQuestionById(Long id);
 	
 	/**
      * 查询用户做题列表

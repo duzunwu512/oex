@@ -7,17 +7,17 @@ import java.util.List;
  * 用户收藏试题 数据层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface UserCollectMapper 
 {
 	/**
      * 查询用户收藏试题信息
      * 
-     * @param iD 用户收藏试题ID
+     * @param id 用户收藏试题ID
      * @return 用户收藏试题信息
      */
-	public UserCollect selectUserCollectById(Long iD);
+	public UserCollect selectUserCollectById(Long id);
 	
 	/**
      * 查询用户收藏试题列表
@@ -46,17 +46,17 @@ public interface UserCollectMapper
 	/**
      * 删除用户收藏试题
      * 
-     * @param iD 用户收藏试题ID
+     * @param id 用户收藏试题ID
      * @return 结果
      */
-	public int deleteUserCollectById(Long iD);
+	public int deleteUserCollectById(Long id);
 	
 	/**
      * 批量删除用户收藏试题
      * 
-     * @param iDs 需要删除的数据ID
+     * @param ids 需要删除的数据ID
      * @return 结果
      */
-	public int deleteUserCollectByIds(String[] iDs);
+	public int deleteUserCollectByIds(String[] ids);
 	
 }

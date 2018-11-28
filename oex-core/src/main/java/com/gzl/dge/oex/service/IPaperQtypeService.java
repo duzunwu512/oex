@@ -7,17 +7,17 @@ import java.util.List;
  * 试卷题型 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IPaperQtypeService 
 {
 	/**
      * 查询试卷题型信息
      * 
-     * @param iD 试卷题型ID
+     * @param id 试卷题型ID
      * @return 试卷题型信息
      */
-	public PaperQtype selectPaperQtypeById(Long iD);
+	public PaperQtype selectPaperQtypeById(Long id);
 	
 	/**
      * 查询试卷题型列表

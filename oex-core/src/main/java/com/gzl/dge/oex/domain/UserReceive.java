@@ -9,7 +9,7 @@ import java.util.Date;
  * 送货表 oex_user_receive
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class UserReceive extends BaseEntity
 {
@@ -32,7 +32,7 @@ public class UserReceive extends BaseEntity
 	/** 收货地址 详细地址 */
 	private String receiveAddress;
 	/** 默认收货地址标志 0 否 1 是 */
-	private String isDefault;
+	private String isdefault;
 	/** 支付状态 */
 	private String status;
 	/** 创建者 */
@@ -118,14 +118,14 @@ public class UserReceive extends BaseEntity
 	{
 		return receiveAddress;
 	}
-	public void setIsDefault(String isDefault) 
+	public void setIsdefault(String isdefault) 
 	{
-		this.isDefault = isDefault;
+		this.isdefault = isdefault;
 	}
 
-	public String getIsDefault() 
+	public String getIsdefault() 
 	{
-		return isDefault;
+		return isdefault;
 	}
 	public void setStatus(String status) 
 	{
@@ -192,7 +192,7 @@ public class UserReceive extends BaseEntity
             .append("receiveCity", getReceiveCity())
             .append("receiveCounty", getReceiveCounty())
             .append("receiveAddress", getReceiveAddress())
-            .append("isDefault", getIsDefault())
+            .append("isdefault", getIsdefault())
             .append("status", getStatus())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())

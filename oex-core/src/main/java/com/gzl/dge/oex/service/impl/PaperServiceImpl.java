@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 试卷名称 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class PaperServiceImpl implements IPaperService 
@@ -23,13 +23,13 @@ public class PaperServiceImpl implements IPaperService
 	/**
      * 查询试卷名称信息
      * 
-     * @param iD 试卷名称ID
+     * @param id 试卷名称ID
      * @return 试卷名称信息
      */
     @Override
-	public Paper selectPaperById(Long iD)
+	public Paper selectPaperById(Long id)
 	{
-	    return paperMapper.selectPaperById(iD);
+	    return paperMapper.selectPaperById(id);
 	}
 	
 	/**

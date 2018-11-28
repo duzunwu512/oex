@@ -7,17 +7,17 @@ import java.util.List;
  * 试题 数据层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface QuestionMapper 
 {
 	/**
      * 查询试题信息
      * 
-     * @param iD 试题ID
+     * @param id 试题ID
      * @return 试题信息
      */
-	public Question selectQuestionById(Long iD);
+	public Question selectQuestionById(Long id);
 	
 	/**
      * 查询试题列表
@@ -46,17 +46,17 @@ public interface QuestionMapper
 	/**
      * 删除试题
      * 
-     * @param iD 试题ID
+     * @param id 试题ID
      * @return 结果
      */
-	public int deleteQuestionById(Long iD);
+	public int deleteQuestionById(Long id);
 	
 	/**
      * 批量删除试题
      * 
-     * @param iDs 需要删除的数据ID
+     * @param ids 需要删除的数据ID
      * @return 结果
      */
-	public int deleteQuestionByIds(String[] iDs);
+	public int deleteQuestionByIds(String[] ids);
 	
 }

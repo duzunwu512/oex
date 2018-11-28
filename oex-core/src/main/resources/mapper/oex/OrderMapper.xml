@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gzl.dge.oex.mapper.OrderMapper">
     
     <resultMap type="Order" id="OrderResult">
-        <result property="iD"    column="ID"    />
+        <result property="id"    column="id"    />
         <result property="orderCode"    column="order_code"    />
         <result property="userId"    column="user_id"    />
         <result property="totalAmount"    column="total_amount"    />
@@ -28,13 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectOrderVo">
-        select ID, order_code, user_id, total_amount, paid_amount, discount_amount, pay_type, pay_date, product_id, invoice_tag, invoice_type, invoice_title, payment_seq, descpt, status, create_by, create_time, update_by, update_time, remark from oex_order
+        select id, order_code, user_id, total_amount, paid_amount, discount_amount, pay_type, pay_date, product_id, invoice_tag, invoice_type, invoice_title, payment_seq, descpt, status, create_by, create_time, update_by, update_time, remark from oex_order
     </sql>
 	
     <select id="selectOrderList" parameterType="Order" resultMap="OrderResult">
         <include refid="selectOrderVo"/>
         <where>  
-            <if test="iD != null "> and ID = #{iD}</if>
+            <if test="id != null "> and id = #{id}</if>
              <if test="orderCode != null  and orderCode != '' "> and order_code = #{orderCode}</if>
              <if test="userId != null "> and user_id = #{userId}</if>
              <if test="totalAmount != null "> and total_amount = #{totalAmount}</if>
@@ -59,13 +59,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectOrderById" parameterType="Long" resultMap="OrderResult">
         <include refid="selectOrderVo"/>
-        where ID = #{iD}
+        where id = #{id}
     </select>
         
     <insert id="insertOrder" parameterType="Order">
         insert into oex_order
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">ID,</if>
+			<if test="id != null  ">id,</if>
 			<if test="orderCode != null  and orderCode != ''  ">order_code,</if>
 			<if test="userId != null  ">user_id,</if>
 			<if test="totalAmount != null  ">total_amount,</if>
@@ -87,7 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="remark != null  and remark != ''  ">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">#{iD},</if>
+			<if test="id != null  ">#{id},</if>
 			<if test="orderCode != null  and orderCode != ''  ">#{orderCode},</if>
 			<if test="userId != null  ">#{userId},</if>
 			<if test="totalAmount != null  ">#{totalAmount},</if>
@@ -133,17 +133,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null  ">update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
         </trim>
-        where ID = #{iD}
+        where id = #{id}
     </update>
 
 	<delete id="deleteOrderById" parameterType="Long">
-        delete from oex_order where ID = #{iD}
+        delete from oex_order where id = #{id}
     </delete>
 	
     <delete id="deleteOrderByIds" parameterType="String">
-        delete from oex_order where ID in 
-        <foreach item="iD" collection="array" open="(" separator="," close=")">
-            #{iD}
+        delete from oex_order where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
     

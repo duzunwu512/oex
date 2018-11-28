@@ -12,7 +12,7 @@ import com.gzl.dge.common.support.Convert;
  * 用户做题 服务层实现
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 @Service
 public class UserQuestionServiceImpl implements IUserQuestionService 
@@ -23,13 +23,13 @@ public class UserQuestionServiceImpl implements IUserQuestionService
 	/**
      * 查询用户做题信息
      * 
-     * @param iD 用户做题ID
+     * @param id 用户做题ID
      * @return 用户做题信息
      */
     @Override
-	public UserQuestion selectUserQuestionById(Long iD)
+	public UserQuestion selectUserQuestionById(Long id)
 	{
-	    return userQuestionMapper.selectUserQuestionById(iD);
+	    return userQuestionMapper.selectUserQuestionById(id);
 	}
 	
 	/**

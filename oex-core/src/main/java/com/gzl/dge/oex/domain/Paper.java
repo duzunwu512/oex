@@ -2,7 +2,6 @@ package com.gzl.dge.oex.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
 
 import java.math.BigDecimal;
@@ -12,21 +11,21 @@ import java.util.Date;
  * 试卷名称表 oex_paper
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class Paper extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
-	/** ID */
-	private Long iD;
+	/** id */
+	private Long id;
 	/** 试卷名称 */
 	private String name;
 	/** 总分 */
 	private BigDecimal totalScore;
 	/** 地区 */
 	private Integer areaId;
-	/** 试卷类别ID */
+	/** 试卷类别id */
 	private Long catalogId;
 	/** 类型名称 */
 	private String typeName;
@@ -47,21 +46,21 @@ public class Paper extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
-	public void setName(String name)
+	public void setName(String name) 
 	{
 		this.name = name;
 	}
 
-	public String getName()
+	public String getName() 
 	{
 		return name;
 	}
@@ -176,7 +175,7 @@ public class Paper extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("name", getName())
             .append("totalScore", getTotalScore())
             .append("areaId", getAreaId())

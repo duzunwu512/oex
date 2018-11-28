@@ -7,17 +7,17 @@ import java.util.List;
  * 试题 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IQuestionService 
 {
 	/**
      * 查询试题信息
      * 
-     * @param iD 试题ID
+     * @param id 试题ID
      * @return 试题信息
      */
-	public Question selectQuestionById(Long iD);
+	public Question selectQuestionById(Long id);
 	
 	/**
      * 查询试题列表

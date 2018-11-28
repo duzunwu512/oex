@@ -1,31 +1,30 @@
 package com.gzl.dge.oex.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import com.gzl.dge.common.base.BaseEntity;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 用户试卷表 oex_user_paper
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class UserPaper extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
 	/** id */
-	private Long iD;
-	/** 考试用户ID */
+	private Long id;
+	/** 考试用户id */
 	private Long userId;
-	/** 试卷ID */
+	/** 试卷id */
 	private Long paperId;
 	/** 得分 */
-	private BigDecimal sCORE;
+	private BigDecimal score;
 	/** 状态（0正常 1停用） */
 	private String status;
 	/** 创建者 */
@@ -39,14 +38,14 @@ public class UserPaper extends BaseEntity
 	/** 备注 */
 	private String remark;
 
-	public void setID(Long iD) 
+	public void setId(Long id) 
 	{
-		this.iD = iD;
+		this.id = id;
 	}
 
-	public Long getID() 
+	public Long getId() 
 	{
-		return iD;
+		return id;
 	}
 	public void setUserId(Long userId) 
 	{
@@ -66,14 +65,14 @@ public class UserPaper extends BaseEntity
 	{
 		return paperId;
 	}
-	public void setSCORE(BigDecimal sCORE) 
+	public void setScore(BigDecimal score) 
 	{
-		this.sCORE = sCORE;
+		this.score = score;
 	}
 
-	public BigDecimal getSCORE() 
+	public BigDecimal getScore() 
 	{
-		return sCORE;
+		return score;
 	}
 	public void setStatus(String status) 
 	{
@@ -132,10 +131,10 @@ public class UserPaper extends BaseEntity
 
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("iD", getID())
+            .append("id", getId())
             .append("userId", getUserId())
             .append("paperId", getPaperId())
-            .append("sCORE", getSCORE())
+            .append("score", getScore())
             .append("status", getStatus())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())

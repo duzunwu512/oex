@@ -7,17 +7,17 @@ import java.util.List;
  * 用户收藏试题 服务层
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public interface IUserCollectService 
 {
 	/**
      * 查询用户收藏试题信息
      * 
-     * @param iD 用户收藏试题ID
+     * @param id 用户收藏试题ID
      * @return 用户收藏试题信息
      */
-	public UserCollect selectUserCollectById(Long iD);
+	public UserCollect selectUserCollectById(Long id);
 	
 	/**
      * 查询用户收藏试题列表

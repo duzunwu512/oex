@@ -6,10 +6,10 @@ import com.gzl.dge.common.base.BaseEntity;
 import java.util.Date;
 
 /**
- * 订单收款凭证表 oex_order_history
+ * 订单付款记录表 oex_order_history
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class OrderHistory extends BaseEntity
 {

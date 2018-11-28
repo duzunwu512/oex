@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gzl.dge.oex.mapper.PaperQtypeMapper">
     
     <resultMap type="PaperQtype" id="PaperQtypeResult">
-        <result property="iD"    column="ID"    />
+        <result property="id"    column="id"    />
         <result property="name"    column="name"    />
         <result property="score"    column="score"    />
         <result property="descpt"    column="descpt"    />
@@ -21,13 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectPaperQtypeVo">
-        select ID, name, score, descpt, seq, paper_id, qtype_id, status, create_by, create_time, update_by, update_time, remark from oex_paper_qtype
+        select id, name, score, descpt, seq, paper_id, qtype_id, status, create_by, create_time, update_by, update_time, remark from oex_paper_qtype
     </sql>
 	
     <select id="selectPaperQtypeList" parameterType="PaperQtype" resultMap="PaperQtypeResult">
         <include refid="selectPaperQtypeVo"/>
         <where>  
-            <if test="iD != null "> and ID = #{iD}</if>
+            <if test="id != null "> and id = #{id}</if>
              <if test="name != null  and name != '' "> and name = #{name}</if>
              <if test="score != null "> and score = #{score}</if>
              <if test="descpt != null  and descpt != '' "> and descpt = #{descpt}</if>
@@ -45,13 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectPaperQtypeById" parameterType="Long" resultMap="PaperQtypeResult">
         <include refid="selectPaperQtypeVo"/>
-        where ID = #{iD}
+        where id = #{id}
     </select>
         
     <insert id="insertPaperQtype" parameterType="PaperQtype">
         insert into oex_paper_qtype
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">ID,</if>
+			<if test="id != null  ">id,</if>
 			<if test="name != null  and name != ''  ">name,</if>
 			<if test="score != null  ">score,</if>
 			<if test="descpt != null  and descpt != ''  ">descpt,</if>
@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="remark != null  and remark != ''  ">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">#{iD},</if>
+			<if test="id != null  ">#{id},</if>
 			<if test="name != null  and name != ''  ">#{name},</if>
 			<if test="score != null  ">#{score},</if>
 			<if test="descpt != null  and descpt != ''  ">#{descpt},</if>
@@ -98,17 +98,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null  ">update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
         </trim>
-        where ID = #{iD}
+        where id = #{id}
     </update>
 
 	<delete id="deletePaperQtypeById" parameterType="Long">
-        delete from oex_paper_qtype where ID = #{iD}
+        delete from oex_paper_qtype where id = #{id}
     </delete>
 	
     <delete id="deletePaperQtypeByIds" parameterType="String">
-        delete from oex_paper_qtype where ID in 
-        <foreach item="iD" collection="array" open="(" separator="," close=")">
-            #{iD}
+        delete from oex_paper_qtype where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
     

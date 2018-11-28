@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.gzl.dge.oex.mapper.UserProductMapper">
     
     <resultMap type="UserProduct" id="UserProductResult">
-        <result property="iD"    column="ID"    />
+        <result property="id"    column="id"    />
         <result property="userId"    column="user_id"    />
         <result property="productId"    column="product_id"    />
         <result property="orderId"    column="order_id"    />
@@ -20,13 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectUserProductVo">
-        select ID, user_id, product_id, order_id, start_date, end_date, status, create_by, create_time, update_by, update_time, remark from oex_user_product
+        select id, user_id, product_id, order_id, start_date, end_date, status, create_by, create_time, update_by, update_time, remark from oex_user_product
     </sql>
 	
     <select id="selectUserProductList" parameterType="UserProduct" resultMap="UserProductResult">
         <include refid="selectUserProductVo"/>
         <where>  
-            <if test="iD != null "> and ID = #{iD}</if>
+            <if test="id != null "> and id = #{id}</if>
              <if test="userId != null "> and user_id = #{userId}</if>
              <if test="productId != null "> and product_id = #{productId}</if>
              <if test="orderId != null "> and order_id = #{orderId}</if>
@@ -43,13 +43,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectUserProductById" parameterType="Long" resultMap="UserProductResult">
         <include refid="selectUserProductVo"/>
-        where ID = #{iD}
+        where id = #{id}
     </select>
         
     <insert id="insertUserProduct" parameterType="UserProduct">
         insert into oex_user_product
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">ID,</if>
+			<if test="id != null  ">id,</if>
 			<if test="userId != null  ">user_id,</if>
 			<if test="productId != null  ">product_id,</if>
 			<if test="orderId != null  ">order_id,</if>
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="remark != null  and remark != ''  ">remark,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="iD != null  ">#{iD},</if>
+			<if test="id != null  ">#{id},</if>
 			<if test="userId != null  ">#{userId},</if>
 			<if test="productId != null  ">#{productId},</if>
 			<if test="orderId != null  ">#{orderId},</if>
@@ -93,17 +93,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateTime != null  ">update_time = #{updateTime},</if>
             <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
         </trim>
-        where ID = #{iD}
+        where id = #{id}
     </update>
 
 	<delete id="deleteUserProductById" parameterType="Long">
-        delete from oex_user_product where ID = #{iD}
+        delete from oex_user_product where id = #{id}
     </delete>
 	
     <delete id="deleteUserProductByIds" parameterType="String">
-        delete from oex_user_product where ID in 
-        <foreach item="iD" collection="array" open="(" separator="," close=")">
-            #{iD}
+        delete from oex_user_product where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
     

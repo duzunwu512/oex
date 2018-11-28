@@ -9,13 +9,13 @@ import java.util.Date;
  * 前台用户表 oex_user
  * 
  * @author Dge
- * @date 2018-11-23
+ * @date 2018-11-28
  */
 public class User extends BaseEntity
 {
 	private static final long serialVersionUID = 1L;
 	
-	/** 用户ID */
+	/** 用户id */
 	private Long id;
 	/** 微信和公众号之间的openid */
 	private String openid;

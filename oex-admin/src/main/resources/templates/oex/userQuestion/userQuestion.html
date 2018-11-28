@@ -11,19 +11,19 @@
 					<div class="select-list">
 						<ul>
 							<li>
-								考试用户ID：<input type="text" name="userId"/>
+								考试用户id：<input type="text" name="userId"/>
 							</li>
 
 							<li>
-								试卷ID：<input type="text" name="paperId"/>
+								试卷id：<input type="text" name="paperId"/>
 							</li>
 
 							<li>
-								试题ID：<input type="text" name="questionId"/>
+								试题id：<input type="text" name="questionId"/>
 							</li>
 
 							<li>
-								答案：<input type="text" name="aNSWER"/>
+								答案：<input type="text" name="answer"/>
 							</li>
 
 							<li>
@@ -31,7 +31,7 @@
 							</li>
 
 							<li>
-								得分：<input type="text" name="sCORE"/>
+								得分：<input type="text" name="score"/>
 							</li>
 
 							<li>
@@ -106,27 +106,27 @@
 		            checkbox: true
 		        },
 				{
-					field : 'iD', 
-					title : 'ID',
+					field : 'id', 
+					title : 'id',
 					visible: false
 				},
 				{
 					field : 'userId', 
-					title : '考试用户ID',
+					title : '考试用户id',
 					sortable: true
 				},
 				{
 					field : 'paperId', 
-					title : '试卷ID',
+					title : '试卷id',
 					sortable: true
 				},
 				{
 					field : 'questionId', 
-					title : '试题ID',
+					title : '试题id',
 					sortable: true
 				},
 				{
-					field : 'aNSWER', 
+					field : 'answer', 
 					title : '答案',
 					sortable: true
 				},
@@ -136,7 +136,7 @@
 					sortable: true
 				},
 				{
-					field : 'sCORE', 
+					field : 'score', 
 					title : '得分',
 					sortable: true
 				},
@@ -175,8 +175,8 @@
 		            align: 'center',
 		            formatter: function(value, row, index) {
 		            	var actions = [];
-		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.iD + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.iD + '\')"><i class="fa fa-remove"></i>删除</a>');
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a>');
 						return actions.join('');
 		            }
 		        }]
