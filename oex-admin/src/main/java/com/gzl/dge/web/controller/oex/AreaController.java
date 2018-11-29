@@ -141,5 +141,15 @@ public class AreaController extends BaseController
 		List<Map<String, Object>> tree = areaService.selectAreaTree();
 		return tree;
 	}
+
+	@GetMapping("/selectAreaTree/{areaId}")
+	public String selectAreaTree(@PathVariable("areaId") Long areaId, ModelMap mmap)
+	{
+		if(areaId ==null){
+			areaId = 1l;
+		}
+		mmap.put("area", areaService.selectAreaById(areaId));
+		return prefix + "/tree";
+	}
 	
 }

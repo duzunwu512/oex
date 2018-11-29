@@ -173,6 +173,101 @@ create table oex_catalog
 
 insert into oex_catalog values(1,  '考试类别', 0,       '_1', '0','admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '考试类别');
 
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (100, '英语类', 1, '', '0', '', '2018/11/29 21:35:19', '', '2018/11/29 21:35:19', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (101, '数学类', 1, '', '0', '', '2018/11/29 21:35:32', '', '2018/11/29 21:35:32', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (102, '软考类', 1, '', '0', '', '2018/11/29 21:35:45', '', '2018/11/29 21:35:45', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (103, '建造师', 1, '', '0', '', '2018/11/29 21:36:07', '', '2018/11/29 21:36:07', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (104, '公务员', 1, '', '0', '', '2018/11/29 21:36:16', '', '2018/11/29 21:36:16', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (105, '海关类', 1, '', '0', '', '2018/11/29 21:36:26', '', '2018/11/29 21:36:26', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (106, '会计类', 1, '', '0', '', '2018/11/29 21:37:27', '', '2018/11/29 21:37:27', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (107, '建筑师', 1, '', '0', '', '2018/11/29 21:37:38', '', '2018/11/29 21:37:38', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (108, '规划师', 1, '', '0', '', '2018/11/29 21:37:48', '', '2018/11/29 21:37:48', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (109, '高考', 1, '', '0', '', '2018/11/29 21:38:09', '', '2018/11/29 21:38:09', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (110, '小升初', 1, '', '0', '', '2018/11/29 21:38:19', '', '2018/11/29 21:38:19', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (111, '初升高', 1, '', '0', '', '2018/11/29 21:38:28', '', '2018/11/29 21:38:28', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (112, '专升本', 1, '', '0', '', '2018/11/29 21:38:43', '', '2018/11/29 21:38:43', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (113, '考研', 1, '', '0', '', '2018/11/29 21:38:55', '', '2018/11/29 21:38:55', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (114, '四级', 100, '', '0', '', '2018/11/29 21:39:06', '', '2018/11/29 21:39:06', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (115, '六级', 100, '', '0', '', '2018/11/29 21:39:15', '', '2018/11/29 21:39:15', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (116, '八级', 100, '', '0', '', '2018/11/29 21:39:23', '', '2018/11/29 21:39:23', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (117, '雅思', 100, '', '0', '', '2018/11/29 21:39:39', '', '2018/11/29 21:39:39', '');
+
+INSERT INTO oex_catalog
+   (`id`, `name`, `parent_id`, `parent_sub`, `status`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`)
+VALUES
+   (118, '托福', 100, '', '0', '', '2018/11/29 21:39:49', '', '2018/11/29 21:39:49', '');
+
 
 -- ----------------------------
 -- 4、试卷名称
@@ -180,8 +275,8 @@ insert into oex_catalog values(1,  '考试类别', 0,       '_1', '0','admin', '
 -- name：试卷名称，如：2007年 全国计算机软件等级考虑上午卷
 -- total_score：总分值
 -- area_id：全国卷，地方卷（省份）
--- type_id oex_type中的主键，如：英语四级， 英语六级...
--- type_name oex_type中的名称， 冗余字段
+-- type_id oex_catalog中的主键，如：英语四级， 英语六级...
+-- type_name oex_catalog中的名称， 冗余字段
 -- yeal_label 年份，来源字典
 -- descpt 描述
 -- ----------------------------
@@ -193,7 +288,7 @@ create table oex_paper
 	total_score     decimal(10,2)	default 100                 comment '总分',
 	area_id       	smallint    	default null                comment '地区',
 	catalog_id	  	bigint 			default null                comment '试卷类别id',
-	type_name 		varchar(100) 	default null 				comment '类型名称',
+	catalog_name 		varchar(100) 	default null 				comment '类型名称',
 	yeal_label    	varchar(30)	  	not null	 				comment '年份',
 	descpt	      	varchar(512) 	default null 				comment '描述',
     status 			char(1) 		default '0'			    	comment '状态（0正常 1停用）',

@@ -143,5 +143,15 @@ public class CatalogController extends BaseController
 		List<Map<String, Object>> tree = catalogService.selectCatalogTree();
 		return tree;
 	}
+
+	@GetMapping("/selectCatalogTree/{catalogId}")
+	public String selectDeptTree(@PathVariable("catalogId") Long catalogId, ModelMap mmap)
+	{
+		if(catalogId ==null){
+			catalogId = 1l;
+		}
+		mmap.put("catalog", catalogService.selectCatalogById(catalogId));
+		return prefix + "/tree";
+	}
 	
 }

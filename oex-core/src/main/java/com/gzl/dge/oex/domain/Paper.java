@@ -11,7 +11,7 @@ import java.util.Date;
  * 试卷名称表 oex_paper
  * 
  * @author Dge
- * @date 2018-11-28
+ * @date 2018-11-29
  */
 public class Paper extends BaseEntity
 {
@@ -28,7 +28,7 @@ public class Paper extends BaseEntity
 	/** 试卷类别id */
 	private Long catalogId;
 	/** 类型名称 */
-	private String typeName;
+	private String catalogName;
 	/** 年份 */
 	private String yealLabel;
 	/** 描述 */
@@ -91,14 +91,14 @@ public class Paper extends BaseEntity
 	{
 		return catalogId;
 	}
-	public void setTypeName(String typeName) 
+	public void setCatalogName(String catalogName) 
 	{
-		this.typeName = typeName;
+		this.catalogName = catalogName;
 	}
 
-	public String getTypeName() 
+	public String getCatalogName() 
 	{
-		return typeName;
+		return catalogName;
 	}
 	public void setYealLabel(String yealLabel) 
 	{
@@ -180,7 +180,7 @@ public class Paper extends BaseEntity
             .append("totalScore", getTotalScore())
             .append("areaId", getAreaId())
             .append("catalogId", getCatalogId())
-            .append("typeName", getTypeName())
+            .append("catalogName", getCatalogName())
             .append("yealLabel", getYealLabel())
             .append("descpt", getDescpt())
             .append("status", getStatus())

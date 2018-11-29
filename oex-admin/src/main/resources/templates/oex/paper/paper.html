@@ -2,66 +2,35 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
+
 <body class="gray-bg">
-    
      <div class="container-div">
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="formId">
+					<input name="catalogId"  type="hidden" id="treeId"/>
+					<input name="areaId"  type="hidden" id="treeAreaId"/>
 					<div class="select-list">
 						<ul>
 							<li>
-								试卷名称：<input type="text" name="name"/>
+								试卷名称：<input type="text" style="width:200px;" name="name"/>
 							</li>
 
 							<li>
-								总分：<input type="text" name="totalScore"/>
+								地区：<input  type="text" style="width:120px;" name="areaName" onclick="selectAreaTree()" readonly="true" id="areaName">
 							</li>
 
 							<li>
-								地区：<input type="text" name="areaId"/>
+								试卷类别：<input  type="text" style="width:120px;" name="catalogName" onclick="selectDeptTree()" readonly="true" id="catalogName">
 							</li>
 
 							<li>
-								试卷类别id：<input type="text" name="catalogId"/>
+								年份：
+								<select name="yealLabel" style="width:120px;" th:with="type=${@dict.getType('oex_year')}">
+									<option value=""></option>
+									<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+								</select>
 							</li>
-
-							<li>
-								类型名称：<input type="text" name="typeName"/>
-							</li>
-
-							<li>
-								年份：<input type="text" name="yealLabel"/>
-							</li>
-
-							<li>
-								描述：<input type="text" name="descpt"/>
-							</li>
-
-							<li>
-								状态（0正常 1停用）：<input type="text" name="status"/>
-							</li>
-
-							<li>
-								创建者：<input type="text" name="createBy"/>
-							</li>
-
-							<li>
-								创建时间：<input type="text" name="createTime"/>
-							</li>
-
-							<li>
-								更新者：<input type="text" name="updateBy"/>
-							</li>
-
-							<li>
-								更新时间：<input type="text" name="updateTime"/>
-							</li>
-
-							<li>
-								备注：<input type="text" name="remark"/>
-							</li>
-
 							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -132,10 +101,11 @@
 				{
 					field : 'catalogId', 
 					title : '试卷类别id',
-					sortable: true
+					sortable: true,
+                    visible: false
 				},
 				{
-					field : 'typeName', 
+					field : 'catalogName', 
 					title : '类型名称',
 					sortable: true
 				},
@@ -151,32 +121,7 @@
 				},
 				{
 					field : 'status', 
-					title : '状态（0正常 1停用）',
-					sortable: true
-				},
-				{
-					field : 'createBy', 
-					title : '创建者',
-					sortable: true
-				},
-				{
-					field : 'createTime', 
-					title : '创建时间',
-					sortable: true
-				},
-				{
-					field : 'updateBy', 
-					title : '更新者',
-					sortable: true
-				},
-				{
-					field : 'updateTime', 
-					title : '更新时间',
-					sortable: true
-				},
-				{
-					field : 'remark', 
-					title : '备注',
+					title : '状态',
 					sortable: true
 				},
 		        {
@@ -192,6 +137,53 @@
             };
             $.table.init(options);
         });
-    </script>
+
+
+
+        /*选择考试树*/
+        function selectDeptTree() {
+            var treeId = $("#treeId").val();
+            var catalogId = $.common.isEmpty(treeId) ? "1" : $("#treeId").val();
+            var options = {
+                title: '选择试卷类别',
+                width: "380",
+                url: ctx + "oex/catalog/selectCatalogTree/" + catalogId,
+                callBack: doSubmit
+            };
+            $.modal.openOptions(options);
+        }
+        function doSubmit(index, layero){
+            var tree = layero.find("iframe")[0].contentWindow.$._tree;
+            if ($.tree.notAllowParents(tree)) {
+                var body = layer.getChildFrame('body', index);
+                $("#treeId").val(body.find('#treeId').val());
+                $("#catalogName").val(body.find('#treeName').val());
+                layer.close(index);
+            }
+        }
+
+        /*选择区域树*/
+        function selectAreaTree() {
+            var treeId = $("#treeAreaId").val();
+            var areaId = $.common.isEmpty(treeId) ? "1" : $("#treeAreaId").val();
+            var options = {
+                title: '选择试卷类别',
+                width: "380",
+                url: ctx + "oex/area/selectAreaTree/" + areaId,
+                callBack: doAreaSubmit
+            };
+            $.modal.openOptions(options);
+        }
+        function doAreaSubmit(index, layero){
+            var tree = layero.find("iframe")[0].contentWindow.$._tree;
+            if ($.tree.notAllowParents(tree)) {
+                var body = layer.getChildFrame('body', index);
+                $("#treeAreaId").val(body.find('#treeId').val());
+                $("#areaName").val(body.find('#treeName').val());
+                layer.close(index);
+            }
+        }
+
+	</script>
 </body>
 </html>

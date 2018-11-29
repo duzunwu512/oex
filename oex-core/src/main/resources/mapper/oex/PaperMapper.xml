@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="totalScore"    column="total_score"    />
         <result property="areaId"    column="area_id"    />
         <result property="catalogId"    column="catalog_id"    />
-        <result property="typeName"    column="type_name"    />
+        <result property="catalogName"    column="catalog_name"    />
         <result property="yealLabel"    column="yeal_label"    />
         <result property="descpt"    column="descpt"    />
         <result property="status"    column="status"    />
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectPaperVo">
-        select id, name, total_score, area_id, catalog_id, type_name, yeal_label, descpt, status, create_by, create_time, update_by, update_time, remark from oex_paper
+        select id, name, total_score, area_id, catalog_id, catalog_name, yeal_label, descpt, status, create_by, create_time, update_by, update_time, remark from oex_paper
     </sql>
 	
     <select id="selectPaperList" parameterType="Paper" resultMap="PaperResult">
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
              <if test="totalScore != null "> and total_score = #{totalScore}</if>
              <if test="areaId != null "> and area_id = #{areaId}</if>
              <if test="catalogId != null "> and catalog_id = #{catalogId}</if>
-             <if test="typeName != null  and typeName != '' "> and type_name = #{typeName}</if>
+             <if test="catalogName != null  and catalogName != '' "> and catalog_name = #{catalogName}</if>
              <if test="yealLabel != null  and yealLabel != '' "> and yeal_label = #{yealLabel}</if>
              <if test="descpt != null  and descpt != '' "> and descpt = #{descpt}</if>
              <if test="status != null  and status != '' "> and status = #{status}</if>
@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="totalScore != null  ">total_score,</if>
 			<if test="areaId != null  ">area_id,</if>
 			<if test="catalogId != null  ">catalog_id,</if>
-			<if test="typeName != null  and typeName != ''  ">type_name,</if>
+			<if test="catalogName != null  and catalogName != ''  ">catalog_name,</if>
 			<if test="yealLabel != null  and yealLabel != ''  ">yeal_label,</if>
 			<if test="descpt != null  and descpt != ''  ">descpt,</if>
 			<if test="status != null  and status != ''  ">status,</if>
@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="totalScore != null  ">#{totalScore},</if>
 			<if test="areaId != null  ">#{areaId},</if>
 			<if test="catalogId != null  ">#{catalogId},</if>
-			<if test="typeName != null  and typeName != ''  ">#{typeName},</if>
+			<if test="catalogName != null  and catalogName != ''  ">#{catalogName},</if>
 			<if test="yealLabel != null  and yealLabel != ''  ">#{yealLabel},</if>
 			<if test="descpt != null  and descpt != ''  ">#{descpt},</if>
 			<if test="status != null  and status != ''  ">#{status},</if>
@@ -93,7 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="totalScore != null  ">total_score = #{totalScore},</if>
             <if test="areaId != null  ">area_id = #{areaId},</if>
             <if test="catalogId != null  ">catalog_id = #{catalogId},</if>
-            <if test="typeName != null  and typeName != ''  ">type_name = #{typeName},</if>
+            <if test="catalogName != null  and catalogName != ''  ">catalog_name = #{catalogName},</if>
             <if test="yealLabel != null  and yealLabel != ''  ">yeal_label = #{yealLabel},</if>
             <if test="descpt != null  and descpt != ''  ">descpt = #{descpt},</if>
             <if test="status != null  and status != ''  ">status = #{status},</if>
