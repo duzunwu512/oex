@@ -41,7 +41,7 @@
 			</div>
 			
 	        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="oex:paper:add">
+				<a class="btn btn-success" id="addPaperBtn" shiro:hasPermission="oex:paper:add">
 					<i class="fa fa-plus"></i> 添加
 				</a>
 				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="oex:paper:edit">
@@ -136,6 +136,11 @@
 		        }]
             };
             $.table.init(options);
+
+
+            $("#addPaperBtn").on("click", function(){
+                $.operate.addFull();
+			});
         });
 
 
