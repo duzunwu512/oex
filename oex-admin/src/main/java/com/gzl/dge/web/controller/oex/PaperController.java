@@ -1,6 +1,7 @@
 package com.gzl.dge.web.controller.oex;
 
 import java.util.List;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.gzl.dge.common.annotation.Log;
 import com.gzl.dge.common.enums.BusinessType;
 import com.gzl.dge.oex.domain.Paper;
 import com.gzl.dge.oex.service.IPaperService;
+import com.gzl.dge.framework.util.ShiroUtils;
 import com.gzl.dge.framework.web.base.BaseController;
 import com.gzl.dge.framework.web.page.TableDataInfo;
 import com.gzl.dge.common.base.AjaxResult;
@@ -81,12 +84,16 @@ public class PaperController extends BaseController
 	 * 新增保存试卷名称
 	 */
 	@RequiresPermissions("oex:paper:add")
-	@Log(title = "试卷名称", businessType = BusinessType.INSERT)
+	@Log(title = "保存试卷基本信息", businessType = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
 	public AjaxResult addSave(Paper paper)
 	{		
-		return toAjax(paperService.insertPaper(paper));
+		paper.setCreateBy(ShiroUtils.getLoginName());
+		AjaxResult rslt = toAjax(paperService.insertPaper(paper));
+		rslt.put("id", paper.getId());
+		
+		return rslt;
 	}
 
 	/**
