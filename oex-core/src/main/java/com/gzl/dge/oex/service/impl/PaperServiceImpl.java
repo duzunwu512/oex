@@ -1,11 +1,16 @@
 package com.gzl.dge.oex.service.impl;
 
 import java.util.List;
+
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.gzl.dge.oex.mapper.PaperMapper;
+import com.gzl.dge.oex.domain.Area;
 import com.gzl.dge.oex.domain.Paper;
 import com.gzl.dge.oex.service.IPaperService;
+import com.gzl.dge.common.exception.BusinessException;
 import com.gzl.dge.common.support.Convert;
 
 /**
@@ -29,7 +34,7 @@ public class PaperServiceImpl implements IPaperService
     @Override
 	public Paper selectPaperById(Long id)
 	{
-	    return paperMapper.selectPaperById(id);
+    	return paperMapper.selectPaperById(id);
 	}
 	
 	/**
@@ -53,6 +58,12 @@ public class PaperServiceImpl implements IPaperService
 	@Override
 	public int insertPaper(Paper paper)
 	{
+		Paper searhPaper = new Paper();
+		searhPaper.setName(paper.getName());
+		List<Paper> papers = paperMapper.selectPaperList(searhPaper);
+		if(CollectionUtils.isNotEmpty(papers)){
+			throw new BusinessException("已存在相同的名称");
+		}
 	    return paperMapper.insertPaper(paper);
 	}
 	

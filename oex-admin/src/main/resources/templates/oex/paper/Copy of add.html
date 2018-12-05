@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+	.add_tab{
+		text-align: center;
+		border-radius: 20px;
+		margin: 13px 5px 5px 5px;
+		width: 25px;
+		height: 20px;
+		border: 1px solid #e5e6e7;
+	    border-radius: 20px;
+	    padding: 1px;
+	    cursor: pointer;
+	    color:#A7B1C2;
+	}
+	.add_tab:hover{
+		border: 1px solid #a4a4a4;
+		color: #a4a4a4;
+		background-color: #e3e3e3;
+	}
+</style>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+
+		<ul id="myTab" class="nav nav-tabs">
+			<li class="active">
+				<a href="#home" data-toggle="tab">
+					基本信息
+				</a>
+			</li>
+			<li style="position: relative;display: block;margin-bottom: -1px;">
+				<div href="#" class="add_tab">
+					<i class="fa fa-plus"></i>
+				</div>
+			</li>
+		</ul>
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade in active" id="home">
+				<form class="form-horizontal m" id="form-paper-add">
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">试卷名称：</label>
+						<div class="col-sm-8">
+							<input id="name" name="name" class="form-control" type="text">
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">总分：</label>
+						<div class="col-sm-2">
+							<input id="totalScore" name="totalScore" class="form-control" type="text">
+						</div>
+						<label class="col-sm-2 control-label">地区：</label>
+						<div class="col-sm-2">
+							<input name="areaId"  type="hidden" id="treeAreaId"/>
+							<input  type="text" name="areaName" class="form-control" onclick="selectAreaTree()" readonly="true" id="areaName">
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">类型名称：</label>
+						<div class="col-sm-2">
+							<input name="catalogId"  type="hidden" id="treeId"/>
+							<input  type="text" name="catalogName" class="form-control" onclick="selectDeptTree()" readonly="true" id="catalogName">
+						</div>
+						<label class="col-sm-2 control-label">年份：</label>
+						<div class="col-sm-2">
+							<select name="yealLabel" class="form-control" style="width:120px;" th:with="type=${@dict.getType('oex_year')}">
+								<option value=""></option>
+								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">状态：</label>
+						<div class="col-sm-8">
+							<div class="radio-box" th:each="dict : ${@dict.getType('sys_normal_disable')}">
+								<input type="radio" th:id="${dict.dictCode}" name="status" th:value="${dict.dictValue}" th:checked="${dict.isDefault == 'Y' ? true : false}">
+								<label th:for="${dict.dictCode}" th:text="${dict.dictLabel}"></label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">描述：</label>
+						<div class="col-sm-8">
+							<textarea id="descpt" name="descpt" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">备注：</label>
+						<div class="col-sm-8">
+							<textarea  id="remark" name="remark" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="btn-group-sm hidden-xs text-center" role="group">
+						<a class="btn btn-primary" id="add_button">
+							<i class="fa fa-plus"></i> 保存
+						</a>
+						<button type="reset" class="btn btn-default " >
+							<i class="fa fa-edit"></i> 重置
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div id="questionType" class="hidden">
+		<form class="form-horizontal m" id="form-paper-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">题型名称：</label>
+				<div class="col-sm-8">
+					<input id="name" name="name" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">题型选择：</label>
+				<div class="col-sm-8">
+					<input id="totalScore" name="totalScore" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">总分：</label>
+				<div class="col-sm-8">
+					<input id="totalScore" name="totalScore" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">描述：</label>
+				<div class="col-sm-8">
+					<input id="descpt" name="descpt" class="form-control" type="text">
+				</div>
+			</div>
+		</form>
+		
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "oex/paper"
+		$("#form-paper-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			}
+		});
+		
+		function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-paper-add').serialize());
+	        }
+	    }
+		
+		$(function(){
+			$("#add_button").on("click", function(){
+				$.modal.loading("正在处理中，请稍后...");
+				$.post(prefix + "/add", $("#form-paper-add").serialize(), function(data){
+					$.modal.closeLoading();
+					if(data.code=='0'){
+						$("body").data("id",data.id);
+						$.modal.msgSuccess("数据保存成功！");
+					}
+				},"json");
+			});
+			
+			
+			$(".add_tab").on("click", function(){
+				 layer.open({
+                    type: 1,
+            		maxmin: false,
+                    shade: 0.3,
+                    title: "添加题型",
+                    fix: false,
+                    area: ['500px', '300px'],
+                    content: $('#questionType'),
+                    shadeClose: true,
+                    btn: ['<i class="fa fa-check"></i> 确认', '<i class="fa fa-close"></i> 关闭'],
+                    yes: function (index, layero) {
+                        options.callBack(index, layero)
+                    }, cancel: function () {
+                        return true;
+                    }
+                }); 
+			});
+		});
+		
+		
+		/*选择考试树*/
+        function selectDeptTree() {
+            var treeId = $("#treeId").val();
+            var catalogId = $.common.isEmpty(treeId) ? "1" : $("#treeId").val();
+            var options = {
+                title: '选择试卷类别',
+                width: "380",
+                url: ctx + "oex/catalog/selectCatalogTree/" + catalogId,
+                callBack: doSubmit
+            };
+            $.modal.openOptions(options);
+        }
+        function doSubmit(index, layero){
+            var tree = layero.find("iframe")[0].contentWindow.$._tree;
+            if ($.tree.notAllowParents(tree)) {
+                var body = layer.getChildFrame('body', index);
+                $("#treeId").val(body.find('#treeId').val());
+                $("#catalogName").val(body.find('#treeName').val());
+                layer.close(index);
+            }
+        }
+
+        /*选择区域树*/
+        function selectAreaTree() {
+            var treeId = $("#treeAreaId").val();
+            var areaId = $.common.isEmpty(treeId) ? "1" : $("#treeAreaId").val();
+            var options = {
+                title: '选择试卷类别',
+                width: "380",
+                url: ctx + "oex/area/selectAreaTree/" + areaId,
+                callBack: doAreaSubmit
+            };
+            $.modal.openOptions(options);
+        }
+        function doAreaSubmit(index, layero){
+            var tree = layero.find("iframe")[0].contentWindow.$._tree;
+            if ($.tree.notAllowParents(tree)) {
+                var body = layer.getChildFrame('body', index);
+                $("#treeAreaId").val(body.find('#treeId').val());
+                $("#areaName").val(body.find('#treeName').val());
+                layer.close(index);
+            }
+        }
+
+	</script>
+</body>
+</html>

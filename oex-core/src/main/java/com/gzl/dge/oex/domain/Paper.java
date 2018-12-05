@@ -35,6 +35,8 @@ public class Paper extends BaseEntity
 	private String descpt;
 	/** 状态（0正常 1停用） */
 	private String status;
+	
+	private Area area;
 
 	public void setId(Long id) 
 	{
@@ -118,7 +120,15 @@ public class Paper extends BaseEntity
 		return status;
 	}
 
-    public String toString() {
+    public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+
+	public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("id", getId())
             .append("name", getName())

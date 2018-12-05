@@ -19,35 +19,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="updateBy"    column="update_by"    />
         <result property="updateTime"    column="update_time"    />
         <result property="remark"    column="remark"    />
+        <association property="area"    column="area_id" javaType="Area" resultMap="areaResult" />
     </resultMap>
+    
+    <resultMap id="areaResult" type="Area">
+		<id     property="id"   column="area_id"     />
+		<result property="name" column="area_name"   />
+	</resultMap>
 	
 	<sql id="selectPaperVo">
         select id, name, total_score, area_id, catalog_id, catalog_name, yeal_label, descpt, status, create_by, create_time, update_by, update_time, remark from oex_paper
     </sql>
+    <sql id="selectPaperWithArea">
+		select p.id, p.name, p.total_score, p.area_id, p.catalog_id, p.catalog_name, p.yeal_label, p.descpt, p.status, p.create_by, p.create_time, p.update_by, p.update_time, p.remark,a.name area_name 
+        from oex_paper p
+        left join oex_area a on a.id = p.area_id        
+    </sql>
 	
     <select id="selectPaperList" parameterType="Paper" resultMap="PaperResult">
-        <include refid="selectPaperVo"/>
+        <include refid="selectPaperWithArea"></include>
         <where>  
-            <if test="id != null "> and id = #{id}</if>
-             <if test="name != null  and name != '' "> and name = #{name}</if>
-             <if test="totalScore != null "> and total_score = #{totalScore}</if>
-             <if test="areaId != null "> and area_id = #{areaId}</if>
-             <if test="catalogId != null "> and catalog_id = #{catalogId}</if>
-             <if test="catalogName != null  and catalogName != '' "> and catalog_name = #{catalogName}</if>
-             <if test="yealLabel != null  and yealLabel != '' "> and yeal_label = #{yealLabel}</if>
-             <if test="descpt != null  and descpt != '' "> and descpt = #{descpt}</if>
-             <if test="status != null  and status != '' "> and status = #{status}</if>
-             <if test="createBy != null  and createBy != '' "> and create_by = #{createBy}</if>
-             <if test="createTime != null "> and create_time = #{createTime}</if>
-             <if test="updateBy != null  and updateBy != '' "> and update_by = #{updateBy}</if>
-             <if test="updateTime != null "> and update_time = #{updateTime}</if>
-             <if test="remark != null  and remark != '' "> and remark = #{remark}</if>
+            <if test="id != null "> and p.id = #{id}</if>
+             <if test="name != null  and name != '' "> and p.name = #{name}</if>
+             <if test="totalScore != null "> and p.total_score = #{totalScore}</if>
+             <if test="areaId != null "> and p.area_id = #{areaId}</if>
+             <if test="catalogId != null "> and p.catalog_id = #{catalogId}</if>
+             <if test="catalogName != null  and catalogName != '' "> 
+             	and p.catalog_name like concat('%', #{catalogName}, '%')
+             </if>
+             <if test="yealLabel != null  and yealLabel != '' "> and p.yeal_label = #{yealLabel}</if>
+             <if test="descpt != null  and descpt != '' "> 
+             	and p.descpt like concat('%', #{descpt}, '%')
+             </if>
+             <if test="status != null  and status != '' "> and p.status = #{status}</if>
+             <if test="createBy != null  and createBy != '' "> and p.create_by = #{createBy}</if>
+             <if test="createTime != null "> and p.create_time = #{createTime}</if>
+             <if test="updateBy != null  and updateBy != '' "> and p.update_by = #{updateBy}</if>
+             <if test="updateTime != null "> and p.update_time = #{updateTime}</if>
+             <if test="remark != null  and remark != '' "> 
+             	and p.remark like concat('%', #{remark}, '%')
+             </if>
          </where>
     </select>
     
     <select id="selectPaperById" parameterType="Long" resultMap="PaperResult">
-        <include refid="selectPaperVo"/>
-        where id = #{id}
+        <include refid="selectPaperWithArea"/>
+        where p.id = #{id}
     </select>
         
     <insert id="insertPaper" parameterType="Paper">
