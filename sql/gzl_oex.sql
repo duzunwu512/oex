@@ -305,7 +305,7 @@ create table oex_paper
 -- ----------------------------
 -- 5、试卷题型关联表
 -- 描述：试卷与字典表中试题的关联表，表示一张席卷中有什么题型，分值及次序
--- qtype_id 来源字典 oex_question_type
+-- qtype 来源字典 oex_question_type
 -- ----------------------------
 drop table if exists oex_paper_qtype;
 create table oex_paper_qtype (
@@ -315,7 +315,7 @@ create table oex_paper_qtype (
 	descpt 			varchar(500) 	null 	 					comment '试题类型名称描述',
 	seq 			smallint(4)		not null 					comment '次序',
 	paper_id 		bigint	 		not null 					comment '试卷id',
-	qtype_id 		bigint	 		not null 					comment '试题分类id',
+	qtype 			varchar(20)		not null 					comment '试题分类',
     status 			char(1) 		default '0'			    	comment '状态（0正常 1停用）',
     create_by       varchar(64)     default ''                 	comment '创建者',
     create_time     datetime    	default now()  				comment '创建时间',

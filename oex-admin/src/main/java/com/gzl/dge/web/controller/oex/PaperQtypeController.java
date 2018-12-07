@@ -71,9 +71,10 @@ public class PaperQtypeController extends BaseController
 	/**
 	 * 新增试卷题型
 	 */
-	@GetMapping("/add")
-	public String add()
+	@GetMapping("/add/{paperId}")
+	public String add(@PathVariable("paperId") Long paperId, ModelMap mmap)
 	{
+		mmap.put("paperId", paperId);
 	    return prefix + "/add";
 	}
 	

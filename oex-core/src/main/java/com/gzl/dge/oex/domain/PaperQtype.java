@@ -29,8 +29,8 @@ public class PaperQtype extends BaseEntity
 	private Integer seq;
 	/** 试卷id */
 	private Long paperId;
-	/** 试题分类id */
-	private Long qtypeId;
+	/** 试题分类 */
+	private String qtype;
 	/** 状态（0正常 1停用） */
 	private String status;
 
@@ -88,14 +88,14 @@ public class PaperQtype extends BaseEntity
 	{
 		return paperId;
 	}
-	public void setQtypeId(Long qtypeId) 
+	public void setQtype(String qtype) 
 	{
-		this.qtypeId = qtypeId;
+		this.qtype = qtype;
 	}
 
-	public Long getQtypeId() 
+	public String getQtype() 
 	{
-		return qtypeId;
+		return qtype;
 	}
 	public void setStatus(String status) 
 	{
@@ -115,7 +115,7 @@ public class PaperQtype extends BaseEntity
             .append("descpt", getDescpt())
             .append("seq", getSeq())
             .append("paperId", getPaperId())
-            .append("qtypeId", getQtypeId())
+            .append("qtype", getQtype())
             .append("status", getStatus())
             .append("createBy", getCreateBy())
             .append("createTime", getCreateTime())

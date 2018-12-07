@@ -10,94 +10,8 @@
 				<form id="formId">
 					<div class="select-list">
 						<ul>
-							<li>
-								试题分类 1：单选；2：多选；3：填空；4：判断；5：问答：<input type="text" name="qtypeId"/>
-							</li>
-
-							<li>
-								1：极易；2：简单；3：适中；4：困难；5：极难：<input type="text" name="difficulty"/>
-							</li>
-
-							<li>
-								题干：<input type="text" name="title"/>
-							</li>
-
-							<li>
-								选项a：<input type="text" name="optionA"/>
-							</li>
-
-							<li>
-								选项b：<input type="text" name="optionB"/>
-							</li>
-
-							<li>
-								选项c：<input type="text" name="optionC"/>
-							</li>
-
-							<li>
-								选项d：<input type="text" name="optionD"/>
-							</li>
-
-							<li>
-								选项e：<input type="text" name="optionE"/>
-							</li>
-
-							<li>
-								选项f：<input type="text" name="optionF"/>
-							</li>
-
-							<li>
-								选项g：<input type="text" name="optionG"/>
-							</li>
-
-							<li>
-								答案：<input type="text" name="answer"/>
-							</li>
-
-							<li>
-								解析：<input type="text" name="analysis"/>
-							</li>
-
-							<li>
-								试卷id：<input type="text" name="paperId"/>
-							</li>
-
-							<li>
-								排序：<input type="text" name="seq"/>
-							</li>
-
-							<li>
-								分数：<input type="text" name="score"/>
-							</li>
-
-							<li>
-								备注：<input type="text" name="descpt"/>
-							</li>
-
-							<li>
-								状态（0正常 1停用）：<input type="text" name="status"/>
-							</li>
-
-							<li>
-								创建者：<input type="text" name="createBy"/>
-							</li>
-
-							<li>
-								创建时间：<input type="text" name="createTime"/>
-							</li>
-
-							<li>
-								更新者：<input type="text" name="updateBy"/>
-							</li>
-
-							<li>
-								更新时间：<input type="text" name="updateTime"/>
-							</li>
-
-							<li>
-								备注：<input type="text" name="remark"/>
-							</li>
-
+							<li th:text="${paper.name}"></li>
+							<li th:text="${paperQtype.name}"></li>
 							<li>
 								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -152,67 +66,17 @@
 				},
 				{
 					field : 'qtypeId', 
-					title : '试题分类 1：单选；2：多选；3：填空；4：判断；5：问答',
+					title : '试题分类',
 					sortable: true
 				},
 				{
 					field : 'difficulty', 
-					title : '1：极易；2：简单；3：适中；4：困难；5：极难',
+					title : '难易程度',
 					sortable: true
 				},
 				{
 					field : 'title', 
 					title : '题干',
-					sortable: true
-				},
-				{
-					field : 'optionA', 
-					title : '选项a',
-					sortable: true
-				},
-				{
-					field : 'optionB', 
-					title : '选项b',
-					sortable: true
-				},
-				{
-					field : 'optionC', 
-					title : '选项c',
-					sortable: true
-				},
-				{
-					field : 'optionD', 
-					title : '选项d',
-					sortable: true
-				},
-				{
-					field : 'optionE', 
-					title : '选项e',
-					sortable: true
-				},
-				{
-					field : 'optionF', 
-					title : '选项f',
-					sortable: true
-				},
-				{
-					field : 'optionG', 
-					title : '选项g',
-					sortable: true
-				},
-				{
-					field : 'answer', 
-					title : '答案',
-					sortable: true
-				},
-				{
-					field : 'analysis', 
-					title : '解析',
-					sortable: true
-				},
-				{
-					field : 'paperId', 
-					title : '试卷id',
 					sortable: true
 				},
 				{
@@ -226,38 +90,8 @@
 					sortable: true
 				},
 				{
-					field : 'descpt', 
-					title : '备注',
-					sortable: true
-				},
-				{
 					field : 'status', 
-					title : '状态（0正常 1停用）',
-					sortable: true
-				},
-				{
-					field : 'createBy', 
-					title : '创建者',
-					sortable: true
-				},
-				{
-					field : 'createTime', 
-					title : '创建时间',
-					sortable: true
-				},
-				{
-					field : 'updateBy', 
-					title : '更新者',
-					sortable: true
-				},
-				{
-					field : 'updateTime', 
-					title : '更新时间',
-					sortable: true
-				},
-				{
-					field : 'remark', 
-					title : '备注',
+					title : '状态',
 					sortable: true
 				},
 		        {

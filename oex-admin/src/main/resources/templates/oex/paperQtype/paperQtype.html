@@ -8,67 +8,17 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="formId">
+					<input type="hidden" name="paperId" id="paperId" th:value="${paper.id}"/>
 					<div class="select-list">
 						<ul>
-							<li>
-								题型名称：<input type="text" name="name"/>
-							</li>
-
-							<li>
-								分值：<input type="text" name="score"/>
-							</li>
-
-							<li>
-								试题类型名称描述：<input type="text" name="descpt"/>
-							</li>
-
-							<li>
-								次序：<input type="text" name="seq"/>
-							</li>
-
-							<li>
-								试卷id：<input type="text" name="paperId"/>
-							</li>
-
-							<li>
-								试题分类id：<input type="text" name="qtypeId"/>
-							</li>
-
-							<li>
-								状态（0正常 1停用）：<input type="text" name="status"/>
-							</li>
-
-							<li>
-								创建者：<input type="text" name="createBy"/>
-							</li>
-
-							<li>
-								创建时间：<input type="text" name="createTime"/>
-							</li>
-
-							<li>
-								更新者：<input type="text" name="updateBy"/>
-							</li>
-
-							<li>
-								更新时间：<input type="text" name="updateTime"/>
-							</li>
-
-							<li>
-								备注：<input type="text" name="remark"/>
-							</li>
-
-							<li>
-								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
-							</li>
+							<li th:text="${paper.name}"></li>
 						</ul>
 					</div>
 				</form>
 			</div>
 			
 	        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="oex:paperQtype:add">
+				<a class="btn btn-success" id="create_paper_qtype_btn" shiro:hasPermission="oex:paperQtype:add">
 					<i class="fa fa-plus"></i> 添加
 				</a>
 				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="oex:paperQtype:edit">
@@ -90,9 +40,16 @@
     <script th:inline="javascript">
         var editFlag = [[${@permission.hasPermi('oex:paperQtype:edit')}]];
         var removeFlag = [[${@permission.hasPermi('oex:paperQtype:remove')}]];
+        var sts = [[${@dict.getType('sys_normal_disable')}]];
         var prefix = ctx + "oex/paperQtype";
 
         $(function() {
+        	$("#create_paper_qtype_btn").on("click", function(){
+        		$.table._option.createUrl=prefix+"/add/"+$("#paperId").val();
+            	$.operate.add();
+        	});
+        	
+        	
             var options = {
                 url: prefix + "/list",
                 createUrl: prefix + "/add",
@@ -113,62 +70,39 @@
 				{
 					field : 'name', 
 					title : '题型名称',
-					sortable: true
+					sortable: false,
+		            formatter: function(value, row, index) {
+		                return '<a href="#" onclick="editQuestionType(\'' + row.id + '\')">' + value + '</a>';
+		            }
 				},
 				{
 					field : 'score', 
 					title : '分值',
-					sortable: true
-				},
-				{
-					field : 'descpt', 
-					title : '试题类型名称描述',
-					sortable: true
+					sortable: false
 				},
 				{
 					field : 'seq', 
 					title : '次序',
-					sortable: true
-				},
-				{
-					field : 'paperId', 
-					title : '试卷id',
-					sortable: true
-				},
-				{
-					field : 'qtypeId', 
-					title : '试题分类id',
-					sortable: true
+					sortable: false
 				},
 				{
 					field : 'status', 
-					title : '状态（0正常 1停用）',
-					sortable: true
+					title : '状态',
+					sortable: false,
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(sts, value);
+                    }
 				},
 				{
-					field : 'createBy', 
-					title : '创建者',
-					sortable: true
-				},
-				{
-					field : 'createTime', 
-					title : '创建时间',
-					sortable: true
-				},
-				{
-					field : 'updateBy', 
-					title : '更新者',
-					sortable: true
-				},
-				{
-					field : 'updateTime', 
-					title : '更新时间',
-					sortable: true
+					field : 'descpt', 
+					title : '描述',
+					sortable: false
 				},
 				{
 					field : 'remark', 
 					title : '备注',
-					sortable: true
+					sortable: false,
+					visible: false
 				},
 		        {
 		            title: '操作',
@@ -183,6 +117,11 @@
             };
             $.table.init(options);
         });
+        
+        function editQuestionType(id){
+			var url = ctx + 'oex/paper/question/' + id;
+		    createMenuItem(url, "试卷试题管理");
+		}
     </script>
 </body>
 </html>

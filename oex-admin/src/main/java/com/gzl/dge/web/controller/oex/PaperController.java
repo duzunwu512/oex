@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gzl.dge.common.annotation.Log;
 import com.gzl.dge.common.enums.BusinessType;
 import com.gzl.dge.oex.domain.Paper;
+import com.gzl.dge.oex.domain.PaperQtype;
+import com.gzl.dge.oex.service.IPaperQtypeService;
 import com.gzl.dge.oex.service.IPaperService;
 import com.gzl.dge.framework.util.ShiroUtils;
 import com.gzl.dge.framework.web.base.BaseController;
@@ -36,6 +38,9 @@ public class PaperController extends BaseController
 	
 	@Autowired
 	private IPaperService paperService;
+	
+	@Autowired
+	private IPaperQtypeService paperQtypeService;
 	
 	@RequiresPermissions("oex:paper:view")
 	@GetMapping()
@@ -131,4 +136,28 @@ public class PaperController extends BaseController
 		return toAjax(paperService.deletePaperByIds(ids));
 	}
 	
+	
+	/**
+	 * 该试卷下的题型
+	 */
+	@GetMapping("/qtype/{id}")
+	public String qtype(@PathVariable("id") Long id, ModelMap mmap)
+	{
+		Paper paper = paperService.selectPaperById(id);
+		mmap.put("paper", paper);
+	    return "oex/paperQtype/paperQtype";
+	}
+	
+	/**
+	 * 该试卷下的题型
+	 */
+	@GetMapping("/question/{id}")
+	public String questions(@PathVariable("id") Long id, ModelMap mmap)
+	{
+		PaperQtype paperQtype = paperQtypeService.selectPaperQtypeById(id);
+		Paper paper = paperService.selectPaperById(paperQtype.getPaperId());
+		mmap.put("paper", paper);
+		mmap.put("paperQtype", paperQtype);
+	    return "oex/question/question";
+	}
 }
