@@ -64,6 +64,16 @@ insert into sys_dict_data values(186,  2,  '市级',     	'2',  'oex_area_level'
 insert into sys_dict_data values(187,  3,  '区级',     	'3',  'oex_area_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '区级');
 insert into sys_dict_data values(188,  0,  '国家级',     	'0',  'oex_area_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '国家级');
 
+-- --难度
+-- --1：极易；2：简单；3：适中；4：困难；5：极难
+insert into sys_dict_type values(108,  '难度级别', 'oex_difficulty_level',   '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '难度级别');
+insert into sys_dict_data values(191,  1,  '极易',     	'1',  'oex_difficulty_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '省份');
+insert into sys_dict_data values(192,  2,  '简单',     	'2',  'oex_difficulty_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '市级');
+insert into sys_dict_data values(193,  3,  '适中',     	'3',  'oex_difficulty_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '区级');
+insert into sys_dict_data values(194,  4,  '困难',     	'4',  'oex_difficulty_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '国家级');
+insert into sys_dict_data values(195,  5,  '极难',     	'5',  'oex_difficulty_level',   '',   '',  	'n', '0', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '国家级');
+
+
 
 -- ----------------------------
 -- 1、前台用户信息表

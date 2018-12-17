@@ -8,24 +8,22 @@
 		<div class="row">
 			<div class="col-sm-12 search-collapse">
 				<form id="formId">
+					<input type="hidden" name="paperId" id="paperId" th:value="${paper.id}"/>
+					<input type="hidden" name="qtypeId" id="qtypeId" th:value="${paperQtype.id}"/>
 					<div class="select-list">
 						<ul>
 							<li th:text="${paper.name}"></li>
 							<li th:text="${paperQtype.name}"></li>
-							<li>
-								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
-							</li>
 						</ul>
 					</div>
 				</form>
 			</div>
 			
 	        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
-				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="oex:question:add">
+				<a class="btn btn-success" onclick="$.operate.addFull()" shiro:hasPermission="oex:question:add">
 					<i class="fa fa-plus"></i> 添加
 				</a>
-				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="oex:question:edit">
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.editFull()" shiro:hasPermission="oex:question:edit">
 					<i class="fa fa-edit"></i> 修改
 				</a>
 				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="oex:question:remove">
@@ -54,6 +52,7 @@
                 removeUrl: prefix + "/remove",
 				exportUrl: prefix + "/export",
                 modalName: "试题",
+                queryParams: queryParams,
 				search: false,
 		        showExport: true,
                 columns: [{
@@ -106,7 +105,21 @@
 		        }]
             };
             $.table.init(options);
+            
+        function queryParams(params) {
+			return {
+				paperId:       $("#paperId").val(),
+				qtypeId:       $("#qtypeId").val(),
+				pageSize:       params.limit,
+    			pageNum:        params.offset / params.limit + 1,
+    			searchValue:    params.search,
+    			orderByColumn:  params.sort,
+    			isAsc:          params.order
+			};
+		}
+            
         });
+        
     </script>
 </body>
 </html>

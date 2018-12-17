@@ -49,6 +49,8 @@
             	$.operate.add();
         	});
         	
+        	$.form.reset()
+        	
         	
             var options = {
                 url: prefix + "/list",
@@ -57,6 +59,7 @@
                 removeUrl: prefix + "/remove",
 				exportUrl: prefix + "/export",
                 modalName: "试卷题型",
+                queryParams: queryParams,
 				search: false,
 		        showExport: true,
                 columns: [{
@@ -117,6 +120,17 @@
             };
             $.table.init(options);
         });
+        
+        function queryParams(params) {
+			return {
+				paperId:       $("#paperId").val(),
+				pageSize:       params.limit,
+    			pageNum:        params.offset / params.limit + 1,
+    			searchValue:    params.search,
+    			orderByColumn:  params.sort,
+    			isAsc:          params.order
+			};
+		}
         
         function editQuestionType(id){
 			var url = ctx + 'oex/paper/question/' + id;
